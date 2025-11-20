@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Penilaian - BERSERI</title>
+    <link rel="icon" type="image/png" href="Asset/logo-berseri.webp">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --background: hsl(0, 0%, 98%);
+            --foreground: hsl(0, 0%, 3.9%);
+            --border: hsl(0, 0%, 89.8%);
+            --card: hsl(0, 0%, 100%);
+            --card-foreground: hsl(0, 0%, 3.9%);
+            --primary: hsl(161, 89%, 20%);
+            --primary-foreground: hsl(0, 0%, 100%);
+            --secondary: hsl(0, 0%, 96.1%);
+            --muted: hsl(0, 0%, 96.1%);
+            --accent: hsl(60, 6%, 94%);
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+        }
+
+        body {
+            font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+        }
+
+        .content-card {
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .assessment-type-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .assessment-card {
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .assessment-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .assessment-card.active {
+            border-color: var(--primary);
+            background-color: var(--accent);
+        }
+
+        .assessment-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .submissions-list {
+            margin-top: 2rem;
+        }
+
+        .filter-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background-color: var(--secondary);
+            border-radius: 0.5rem;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.375rem;
+        }
+
+        .filter-group label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--foreground);
+        }
+
+        .filter-input {
+            padding: 0.5rem;
+            border: 1px solid var(--border);
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+        }
+
+        .submissions-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 1rem;
+        }
+
+        .submissions-table th,
+        .submissions-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .submissions-table th {
+            font-weight: 600;
+            background-color: var(--secondary);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .submissions-table tbody tr:hover {
+            background-color: var(--muted);
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .status-reviewed {
+            background-color: #DEF7EC;
+            color: #03543F;
+        }
+
+        .status-pending {
+            background-color: #FEF3C7;
+            color: #92400E;
+        }
+
+        .category-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .category-madya {
+            background-color: #E0E7FF;
+            color: #3730A3;
+        }
+
+        .category-pratama {
+            background-color: #DBEAFE;
+            color: #1E40AF;
+        }
+
+        .category-mandiri {
+            background-color: #D1FAE5;
+            color: #065F46;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            transition: all 0.2s;
+        }
+
+        .btn-back:hover {
+            opacity: 0.9;
+        }
+
+        .btn-review {
+            padding: 0.5rem 1rem;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+
+        .btn-review:hover {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .filter-section {
+                grid-template-columns: 1fr;
+                padding: 0.5rem;
+            }
+
+            .submissions-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .assessment-type-selector {
+                grid-template-columns: 1fr;
+            }
+
+            .content-card {
+                padding: 1rem;
+                margin: 0.5rem;
+            }
+
+            .submissions-table th,
+            .submissions-table td {
+                padding: 0.75rem;
+                font-size: 0.875rem;
+            }
+
+            .btn-review {
+                padding: 0.375rem 0.75rem;
+            }
+
+            .category-badge,
+            .status-badge {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="max-w-7xl mx-auto px-4 lg:px-6 py-4">
+        <div class="flex items-center justify-between mb-4">
+            <button class="btn-back" onclick="window.location.href='dashboard-penilaian.html'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Kembali ke Dashboard
+            </button>
+        </div>
+
+        <div class="content-card">
+            <h1 class="text-2xl font-bold text-primary mb-4">Review Penilaian</h1>
+
+            <div class="assessment-type-selector" id="assessmentTypeSelector">
+            </div>
+
+            <div class="submissions-list hidden" id="submissionsList">
+                <div class="filter-section">
+                    <div class="filter-group">
+                    <label for="searchInput">Cari</label>
+                    <input type="text" id="searchInput" class="filter-input" placeholder="Cari nama/ID/lokasi...">
+                </div>
+                <div class="filter-group">
+                    <label for="categoryFilter">Kategori Program</label>
+                    <select id="categoryFilter" class="filter-input">
+                        <option value="">Semua Kategori</option>
+                        <option value="mandiri">MANDIRI</option>
+                        <option value="pratama">PRATAMA</option>
+                        <option value="madya">MADYA</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="dateFilter">Tanggal Submit</label>
+                    <input type="text" id="dateFilter" class="filter-input" placeholder="Pilih tanggal...">
+                </div>
+                <div class="filter-group">
+                    <label for="statusFilter">Status</label>
+                    <select id="statusFilter" class="filter-input">
+                        <option value="">Semua Status</option>
+                        <option value="pending">Belum Dinilai</option>
+                        <option value="reviewed">Sudah Dinilai</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="submissions-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Pengisi</th>
+                            <th>Lokasi</th>
+                            <th>Kategori</th>
+                            <th>Skor</th>
+                            <th>Tanggal Submit</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="submissionsTableBody">
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Initialize data and variables
+        let currentType = null;
+        const submissions = {
+            mandiri: [
+                { id: "M001", name: "Desa ARGOYUWONO", location: "Kecamatan AMPELGADING, Kabupaten MALANG", category: "pratama", score: 129.50, date: "2025-11-12", status: "pending" },
+                { id: "M002", name: "Desa SUMBERAGUNG", location: "Kecamatan DANDER, Kabupaten BOJONEGORO", category: "pratama", score: 125, date: "2025-10-08", status: "reviewed" },
+                { id: "M003", name: "Kelurahan KAUMAN", location: "Kecamatan KLOJEN, Kota MALANG", category: "madya", score: 198, date: "2025-10-05", status: "reviewed" },
+                { id: "M004", name: "Desa SUDIMORO", location: "Kecamatan MEGALUH, Kabupaten JOMBANG", category: "mandiri", score: 265, date: "2025-10-01", status: "pending" }
+            ],
+            kabkota: [
+                { id: "K001", name: "Kabupaten MALANG", location: "Desa ARGOYUWONO, Kecamatan AMPELGADING, Kabupaten MALANG", category: "pratama", score: 125, date: "2025-11-08", status: "pending" },
+                { id: "K002", name: "Kabupaten BOJONEGORO", location: "Desa SUMBERAGUNG, Kecamatan DANDER, Kabupaten BOJONEGORO", category: "pratama", score: 118, date: "2025-11-05", status: "reviewed" },
+                { id: "K003", name: "Kota MALANG", location: "Desa KAUMAN, Kecamatan KLOJEN, Kota MALANG", category: "madya", score: 265, date: "2025-11-01", status: "reviewed" },
+                { id: "K004", name: "Kabupaten JOMBANG", location: "Desa SUDIMORO, Kecamatan MEGALUH, Kabupaten JOMBANG", category: "mandiri", score: 265, date: "2025-11-01", status: "reviewed" }
+            ],
+            provinsi: [
+                { id: "P001", name: "PROVINSI", location: "Desa ARGOYUWONO, Kecamatan AMPELGADING, Kabupaten MALANG", category: "pratama", score: 150, date: "2025-12-05", status: "pending" },
+                { id: "P002", name: "PROVINSI", location: "Desa SUMBERAGUNG, Kecamatan DANDER, Kabupaten BOJONEGORO", category: "pratama", score: 88, date: "2025-12-04", status: "reviewed" },
+                { id: "P003", name: "PROVINSI", location: "Desa KAUMAN, Kecamatan KLOJEN, Kota MALANG", category: "madya", score: 85, date: "2025-12-03", status: "reviewed" },
+                { id: "P004", name: "PROVINSI", location: "Desa SUDIMORO, Kecamatan MEGALUH, Kabupaten JOMBANG", category: "mandiri", score: 195, date: "2025-12-03", status: "reviewed" }
+            ],
+            lapangan: [
+                { id: "L001", name: "PROVINSI", location: "Desa ARGOYUWONO, Kecamatan AMPELGADING, Kabupaten MALANG", category: "pratama", score: 162, date: "2025-12-05", status: "pending" },
+                { id: "L002", name: "PROVINSI", location: "Desa SUMBERAGUNG, Kecamatan DANDER, Kabupaten BOJONEGORO", category: "pratama", score: 120, date: "2025-12-03", status: "reviewed" },
+                { id: "L003", name: "PROVINSI", location: "Desa KAUMAN, Kecamatan KLOJEN, Kota MALANG", category: "madya", score: 187, date: "2025-12-04", status: "reviewed" },
+                { id: "L004", name: "PROVINSI", location: "Desa SUDIMORO, Kecamatan MEGALUH, Kabupaten JOMBANG", category: "mandiri", score: 237, date: "2025-12-04", status: "reviewed" }
+            ]
+        };
+
+        // Check authentication and set up user context
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (!currentUser) {
+            window.location.href = 'login.html';
+        } else if (!['provinsi', 'kabupaten/kota'].includes(currentUser.role)) {
+            window.location.href = 'index.html';
+        }
+
+        function setupCardListeners() {
+            document.querySelectorAll('.assessment-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    document.querySelectorAll('.assessment-card').forEach(c => 
+                        c.classList.remove('active')
+                    );
+                    card.classList.add('active');
+                    currentType = card.getAttribute('data-type');
+                    document.getElementById('submissionsList').classList.remove('hidden');
+                    loadSubmissions(currentType);
+                });
+            });
+        }
+
+        function renderAssessmentTypes() {
+            const container = document.getElementById('assessmentTypeSelector');
+            const cards = [];
+
+            if (currentUser.role === 'provinsi' || currentUser.role === 'kabupaten/kota') {
+                cards.push(`
+                    <div class="assessment-card" data-type="mandiri">
+                        <h3>Penilaian Mandiri</h3>
+                        <p class="text-sm text-gray-600">Review hasil penilaian mandiri dari desa/kelurahan</p>
+                    </div>
+                    <div class="assessment-card" data-type="kabkota">
+                        <h3>Penilaian Kabupaten/Kota</h3>
+                        <p class="text-sm text-gray-600">Review hasil penilaian tingkat kabupaten/kota</p>
+                    </div>
+                `);
+            }
+
+            if (currentUser.role === 'provinsi') {
+                cards.push(`
+                    <div class="assessment-card" data-type="provinsi">
+                        <h3>Penilaian Provinsi</h3>
+                        <p class="text-sm text-gray-600">Review hasil penilaian tingkat provinsi</p>
+                    </div>
+                    <div class="assessment-card" data-type="lapangan">
+                        <h3>Penilaian Lapangan</h3>
+                        <p class="text-sm text-gray-600">Review hasil penilaian verifikasi lapangan</p>
+                    </div>
+                `);
+            }
+
+            container.innerHTML = cards.join('');
+            setupCardListeners();
+            
+            // Auto-select first card
+            const firstCard = container.querySelector('.assessment-card');
+            if (firstCard) {
+                firstCard.click();
+            }
+        }
+
+        function loadSubmissions(type) {
+            const tbody = document.getElementById('submissionsTableBody');
+            tbody.innerHTML = '';
+
+            let filteredSubmissions = submissions[type] || [];
+
+            // Filter based on user role and permissions
+            if (currentUser.role === 'kabupaten/kota') {
+                if (type !== 'mandiri' && type !== 'kabkota') {
+                    return; // Kabupaten/kota users can't see provinsi and lapangan assessments
+                }
+                // Skip location filtering for now as wilayah is not set in the mock data
+                // Will be implemented when real data with proper wilayah is available
+            }
+
+            // Apply filters
+            const searchText = document.getElementById('searchInput').value.toLowerCase();
+            const categoryFilter = document.getElementById('categoryFilter').value.toLowerCase();
+            const dateFilter = document.getElementById('dateFilter').value;
+            const statusFilter = document.getElementById('statusFilter').value;
+
+            filteredSubmissions = filteredSubmissions.filter(submission => {
+                const matchesSearch = submission.name.toLowerCase().includes(searchText) || 
+                                    submission.id.toLowerCase().includes(searchText) ||
+                                    submission.location.toLowerCase().includes(searchText);
+                const matchesCategory = !categoryFilter || 
+                                    submission.category === categoryFilter;
+                const matchesDate = !dateFilter || 
+                                    submission.date === dateFilter;
+                const matchesStatus = !statusFilter || 
+                                    submission.status === statusFilter;
+
+                return matchesSearch && matchesCategory && 
+                        matchesDate && matchesStatus;
+            });
+
+            filteredSubmissions.forEach(submission => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="font-medium">${submission.id}</td>
+                    <td>${submission.name}</td>
+                    <td>${submission.location}</td>
+                    <td>
+                        <span class="category-badge category-${submission.category}">
+                            ${submission.category.toUpperCase()}
+                        </span>
+                    </td>
+                    <td>${submission.score}</td>
+                    <td>${submission.date}</td>
+                    <td>
+                        <span class="status-badge status-${submission.status}">
+                            ${submission.status === 'reviewed' ? 'Sudah Dinilai' : 'Belum Dinilai'}
+                        </span>
+                    </td>
+                    <td>
+                        <button class="btn-review" onclick="reviewSubmission('${submission.id}', '${type}')">
+                            Review
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function reviewSubmission(id, type) {
+            window.location.href = `review-detail.html?id=${id}&type=${type}`;
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAssessmentTypes();
+
+            // Initialize flatpickr for date picker
+            flatpickr("#dateFilter", {
+                dateFormat: "Y-m-d",
+                allowInput: true
+            });
+
+            // Set up filter event listeners
+            ['searchInput', 'categoryFilter', 'dateFilter', 'statusFilter'].forEach(id => {
+                document.getElementById(id).addEventListener('change', () => {
+                    if (currentType) loadSubmissions(currentType);
+                });
+                document.getElementById(id).addEventListener('keyup', () => {
+                    if (currentType) loadSubmissions(currentType);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

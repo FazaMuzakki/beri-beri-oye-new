@@ -1,0 +1,77 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
+
+/* Scope all CSS so it affects only this section */
+#alert-demo * {
+  box-sizing: border-box;
+  font-family: Lato, Arial;
+}
+
+/* Make the container fill available width */
+#alert-demo {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Headings */
+#alert-demo h1 {
+  text-align: center;
+  border: 2px solid #ddd;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+#alert-demo h2 {
+  border-bottom: 1px solid #ddd;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+#alert-demo a {
+  text-decoration: none;
+  color: #2ecc71;
+}
+#alert-demo a:hover {
+  color: #27ae60;
+}
+
+/* Alert Boxes */
+#alert-demo .alert {
+  width: 100%; /* make each alert box fill its parent */
+  position: relative;
+  display: block;
+  padding: 1em 1.8em;
+  font-size: 0.9em;
+  font-weight: 300;
+  line-height: 1.4;
+  text-align: left;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  color: white;
+  background: transparent;
+}
+
+/* Error */
+#alert-demo .alert-error {
+  background: #e74c3c;
+  border: 1px solid #c0392b;
+}
+
+/* Success */
+#alert-demo .alert-success {
+  background: #2ecc71;
+  border: 1px solid #27ae60;
+}
+
+/* Info */
+#alert-demo .alert-info {
+  background: #3498db;
+  border: 1px solid #2980b9;
+}
+
+/* Rounded corners */
+#alert-demo .radius {
+  border-radius: 6px;
+}

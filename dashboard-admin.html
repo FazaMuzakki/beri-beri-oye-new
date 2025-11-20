@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Admin Panel</title>
+  <link rel="icon" type="image/webp" href="Asset/logo-berseri.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/dashboard-admin.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-container">
+          <div class="logo-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+            </svg>
+          </div>
+          <div>
+            <h2 class="sidebar-title">Admin Panel</h2>
+            <p class="sidebar-subtitle">Content Management</p>
+          </div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <div class="nav-group-label">MANAGEMENT</div>
+          <a href="#" class="nav-item" data-tab="dashboard">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="nav-icon">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
+            </svg>
+            <span>Dashboard</span>
+          </a>
+                    <a href="#" class="nav-item" data-tab="program-data">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="nav-icon">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+            </svg>
+            <span>Data Manager</span>
+          </a>
+          <a href="#" class="nav-item" data-tab="notifications">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="nav-icon">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+            </svg>
+            <span>Pengumuman</span>
+          </a>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-container">
+      <header class="header">
+        <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+      </header>
+
+      <main class="content">
+        <!-- Dashboard Tab -->
+        <div class="tab-content active" id="dashboard-tab">
+          <div class="page-header">
+            <h1 class="page-title">Dashboard</h1>
+            <p class="page-description">Overview of your website management</p>
+          </div>
+
+          <div class="stats-grid">
+            
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-label">Active Notifications</div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="stat-icon">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+                </svg>
+              </div>
+              <div class="stat-content">
+                <div class="stat-value" id="active-notifications-count">0</div>
+                <p class="stat-change" id="active-notifications-change">Updating...</p>
+              </div>
+            </div>
+
+            
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-label">Monthly Visits</div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="stat-icon">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
+                </svg>
+              </div>
+              <div class="stat-content">
+                <div class="stat-value">12.4K</div>
+                <p class="stat-change">+18% from last month</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="charts-grid">
+            <div class="card chart-card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Statistik Pendaftar</h3>
+                </div>
+                <div class="chart-filters">
+                  <!-- Time filters -->
+                  <select id="timeFilter" class="form-select">
+                    <option value="24h">24 Jam</option>
+                    <option value="week">1 Minggu</option>
+                    <option value="month">1 Bulan</option>
+                    <option value="year">1 Tahun</option>
+                  </select>
+                  <!-- Category filters -->
+                  <select id="categoryFilter" class="form-select">
+                    <option value="all">Semua</option>
+                    <option value="pratama">Pratama</option>
+                    <option value="madya">Madya</option>
+                    <option value="mandiri">Mandiri</option>
+                  </select>
+                </div>
+              </div>
+              <div class="card-content">
+                <canvas id="registrationChart" height="300"></canvas>
+              </div>
+            </div>
+
+            <div class="card chart-card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Statistik Pengunjung</h3>
+                </div>
+                <div class="chart-filters">
+                  <!-- Time filters -->
+                  <select id="visitorTimeFilter" class="form-select">
+                    <option value="24h">24 Jam</option>
+                    <option value="week">1 Minggu</option>
+                    <option value="month">1 Bulan</option>
+                    <option value="year">1 Tahun</option>
+                  </select>
+                </div>
+              </div>
+              <div class="card-content">
+                <canvas id="visitorChart" height="300"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom-grid">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title"> Aktivitas Terkini</h3>
+                <div style="display: flex; gap: 8px;">
+                  <button class="btn-icon" onclick="exportActivities()" title="Export aktivitas">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1rem; height: 1rem;">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33A3 3 0 0116.5 19.5H6.75Z" />
+                    </svg>
+                  </button>
+                  <button class="btn-icon" onclick="clearAllActivities()" title="Hapus semua aktivitas">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1rem; height: 1rem;">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="card-content">
+                <div class="activity-list" style="max-height: 300px; overflow-y: auto; padding-right: 4px;">
+                  <div class="activity-item">
+                    <p class="activity-text" style="color: var(--muted-foreground);">Memuat aktivitas...</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Pintasan</h3>
+              </div>
+              <div class="card-content">
+                <button class="action-button" onclick="switchTab('program-data')">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="action-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+                  </svg>
+                  <span>Data Manager</span>
+                </button>
+                <button class="action-button" onclick="switchTab('notifications')">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="action-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+                  </svg>
+                  <span>Pengumuman</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Page Content Tab -->
+        
+        <!-- Program Data Tab -->
+        <div class="tab-content" id="program-data-tab">
+          <div class="page-header">
+            <h1 class="page-title">Program Data Manager</h1>
+            <p class="page-description">Edit chart and map data in JSON format</p>
+          </div>
+
+          <div class="tabs-container">
+            <div class="tabs-list">
+              <button class="tab-button active" onclick="switchDataTab('chart')">Chart Data</button>
+              <button class="tab-button" onclick="switchDataTab('map')">Map Data</button>
+              <button class="tab-button" onclick="switchDataTab('detail-berseri')">Data Detail BERSERI</button>
+              <button class="tab-button" onclick="switchDataTab('kabupaten')">Data Kabupaten/Kota</button>
+            </div>
+
+            <div class="data-tab-content active" id="chart-data">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Bar Chart Data - Penghargaan Jumlah Desa/Kelurahan Berseri</h3>
+                  <div class="button-group" style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <button class="btn-primary" onclick="saveChartDataSimple()">💾 Simpan</button>
+                    <button class="btn-secondary" onclick="loadChartDataFromStorage()">📂 Muat Tersimpan</button>
+                    <button class="btn-secondary" onclick="exportChartData()">📥 Export JSON</button>
+                    <button class="btn-secondary" onclick="addYearColumn()">➕ Tambah Tahun</button>
+                    <button class="btn-secondary" onclick="openDeleteYearModal()">🗑️ Hapus Tahun</button>
+                  </div>
+                </div>
+                <div class="card-content">
+                  <style>
+                    .chart-table-wrapper {
+                      overflow-x: auto;
+                      overflow-y: visible;
+                      background: #1F2937;
+                      border: 1px solid #374151;
+                      border-radius: 6px;
+                      -webkit-overflow-scrolling: touch;
+                    }
+                    
+                    body.dark .chart-table-wrapper {
+                      background: #1F2937;
+                      border: 1px solid #374151;
+                    }
+                    
+                    .chart-table {
+                      width: auto;
+                      min-width: 100%;
+                      border-collapse: collapse;
+                      font-family: 'Inter', sans-serif;
+                      background: #1F2937;
+                    }
+                    
+                    .chart-table thead {
+                      background: #2D3748;
+                      border-bottom: 1px solid #374151;
+                    }
+                    
+                    body.dark .chart-table thead {
+                      background: #2D3748;
+                      border-bottom: 1px solid #374151;
+                    }
+                    
+                    .chart-table thead th {
+                      padding: 12px;
+                      text-align: center;
+                      font-weight: 600;
+                      font-size: 13px;
+                      color: #E5E7EB;
+                      width: 80px;
+                      min-width: 80px;
+                      border-right: 1px solid #374151;
+                    }
+                    
+                    .chart-table thead th:last-child {
+                      border-right: none;
+                    }
+                    
+                    body.dark .chart-table thead th {
+                      color: #E5E7EB;
+                      border-right: 1px solid #374151;
+                    }
+                    
+                    .chart-table thead th:first-child {
+                      text-align: left;
+                      width: 100px;
+                      border-right: 1px solid #374151;
+                    }
+                    
+                    .chart-table tbody tr {
+                      border-bottom: 1px solid #374151;
+                      transition: background-color 0.2s;
+                    }
+                    
+                    body.dark .chart-table tbody tr {
+                      border-bottom: 1px solid #374151;
+                    }
+                    
+                    .chart-table tbody tr:hover {
+                      background: #374151;
+                    }
+                    
+                    body.dark .chart-table tbody tr:hover {
+                      background: #374151;
+                    }
+                    
+                    .chart-table tbody td {
+                      padding: 8px;
+                      text-align: center;
+                      border-right: 1px solid #374151;
+                      background: #1F2937;
+                      width: 80px;
+                      min-width: 80px;
+                    }
+                    
+                    .chart-table tbody td:last-child {
+                      border-right: none;
+                    }
+                    
+                    body.dark .chart-table tbody td {
+                      background: #1F2937;
+                      border-right: 1px solid #374151;
+                    }
+                    
+                    .chart-table tbody td:first-child {
+                      text-align: left;
+                      font-weight: 600;
+                      padding: 12px;
+                      border-right: 1px solid #374151;
+                    }
+                    
+                    .chart-table .category-pratama {
+                      color: #60A5FA;
+                    }
+                    
+                    .chart-table .category-madya {
+                      color: #FBBF24;
+                    }
+                    
+                    .chart-table .category-mandiri {
+                      color: #34D399;
+                    }
+                    
+                    body.dark .chart-table .category-pratama {
+                      color: #60A5FA;
+                    }
+                    
+                    body.dark .chart-table .category-madya {
+                      color: #FBBF24;
+                    }
+                    
+                    body.dark .chart-table .category-mandiri {
+                      color: #34D399;
+                    }
+                    
+                    .chart-table input[type="number"] {
+                      width: 64px;
+                      padding: 6px 8px;
+                      border: 1px solid #374151;
+                      font-size: 13px;
+                      text-align: center;
+                      background: #2D3748;
+                      color: #F3F4F6;
+                      transition: border-color 0.2s;
+                      box-sizing: border-box;
+                    }
+                    
+                    body.dark .chart-table input[type="number"] {
+                      background: #2D3748;
+                      border-color: #374151;
+                      color: #F3F4F6;
+                    }
+                    
+                    .chart-table input[type="number"]:focus {
+                      outline: none;
+                      border-color: #60A5FA;
+                      background: #3A4556;
+                      color: #F3F4F6;
+                      box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+                    }
+                    
+                    body.dark .chart-table input[type="number"]:focus {
+                      border-color: #60A5FA;
+                      background: #3A4556;
+                      color: #F3F4F6;
+                      box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+                    }
+                    
+                    .year-header-cell {
+                      position: relative;
+                    }
+
+                    /* Delete Year Modal Styles */
+                    #delete-year-modal {
+                      animation: fadeIn 0.2s ease-out;
+                    }
+
+                    @keyframes fadeIn {
+                      from {
+                        opacity: 0;
+                      }
+                      to {
+                        opacity: 1;
+                      }
+                    }
+
+                    #delete-year-modal .modal-content {
+                      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+                    }
+                  </style>
+                  
+                  <div class="chart-table-wrapper">
+                    <table class="chart-table" id="chart-data-table">
+                      <thead>
+                        <tr id="header-row">
+                          <th>Kategori</th>
+                          <!-- Year headers akan di-generate dengan JavaScript -->
+                        </tr>
+                      </thead>
+                      <tbody id="table-body">
+                        <!-- Rows akan di-generate dengan JavaScript -->
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <!-- Hidden JSON for export -->
+                  <textarea id="chart-json" class="form-textarea code-textarea" rows="20" style="display:none;">{ 
+                    "chartTitle": "Penghargaan Jumlah Desa/Kelurahan Berseri",
+                    "labels": ["2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020 Covid", "2021", "2022", "2024", "2025"],
+                    "datasets": [
+                      {
+                        "label": "Pratama",
+                        "data": [20, 45, 38, 39, 34, 39, 40, 40, 0, 50, 60, 70, 100],
+                        "backgroundColor": "#1D4ED8",
+                        "borderColor": "#1D4ED8"
+                      },
+                      {
+                        "label": "Madya",
+                        "data": [13, 25, 25, 20, 30, 26, 28, 24, 0, 33, 35, 42, 60],
+                        "backgroundColor": "#F59E0B",
+                        "borderColor": "#F59E0B"
+                      },
+                      {
+                        "label": "Mandiri",
+                        "data": [10, 10, 10, 15, 8, 14, 11, 16, 0, 16, 25, 18, 37],
+                        "backgroundColor": "#10B981",
+                        "borderColor": "#10B981"
+                      }
+                    ]
+                  }</textarea>
+
+                  <!-- Delete Year Modal -->
+                  <div id="delete-year-modal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center;">
+                    <div class="modal-content" style="background:#1F2937; padding:20px; border-radius:8px; width:90%; max-width:400px; color:#E5E7EB;">
+                      <div class="modal-header" style="margin-bottom:16px;">
+                        <h3 style="margin:0; font-size:16px; font-weight:600; color:#E5E7EB;">Hapus Tahun</h3>
+                      </div>
+                      <div class="modal-body" style="margin-bottom:16px;">
+                        <p style="margin:0 0 12px 0; font-size:13px; color:#D1D5DB;">Pilih tahun yang ingin dihapus (bisa lebih dari satu):</p>
+                        <div id="delete-year-options" style="display:grid; grid-template-columns:repeat(2, 1fr); gap:8px; max-height:250px; overflow-y:auto; padding-right:4px;">
+                          <!-- Akan di-generate dengan JavaScript -->
+                        </div>
+                      </div>
+                      <div class="modal-footer" style="display:flex; gap:6px; justify-content:flex-end;">
+                        <button onclick="closeDeleteYearModal()" style="padding:6px 14px; background:#4B5563; color:#E5E7EB; border:none; border-radius:4px; cursor:pointer; font-weight:500; font-size:13px;">Batal</button>
+                        <button onclick="confirmDeleteSelectedYears()" style="padding:6px 14px; background:#EF4444; color:#FFF; border:none; border-radius:4px; cursor:pointer; font-weight:500; font-size:13px;">Hapus Terpilih</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="data-tab-content" id="map-data">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Map Coordinates Data</h3>
+                  <div class="button-group" style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <button class="btn-primary" onclick="saveMapData()">Save</button>
+                    <button class="btn-secondary" onclick="loadMapFromFile()">Load File</button>
+                    <button class="btn-secondary" onclick="loadMapSaved()">Load Saved</button>
+                    <button class="btn-secondary" onclick="exportMapData()">Export JSON</button>
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div class="form-group">
+                    <label class="form-label">JSON Data</label>
+                    <textarea id="location-coordinates-json" class="form-textarea code-textarea" rows="20">{
+                      "participants": [
+                        {
+                          "id": 1,
+                          "name": "Location 1",
+                          "latitude": -6.2088,
+                          "longitude": 106.8456,
+                          "categories": [1, 2],
+                          "regency": "Jakarta",
+                          "subdistrict": "Central"
+                        }
+                      ]
+                    }</textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="data-tab-content" id="detail-berseri-data">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Data detail BERSERI</h3>
+                  <div class="button-group" style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <button class="btn-primary" onclick="saveDetailData()">Save</button>
+                    <button class="btn-secondary" onclick="loadDetailFromFile()">Load File</button>
+                    <button class="btn-secondary" onclick="loadDetailSaved()">Load Saved</button>
+                    <button class="btn-secondary" onclick="exportDetailData()">Export JSON</button>
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div class="form-group">
+                    <label class="form-label">JSON Data</label>
+                    <textarea id="data-detail-berseri-json" class="form-textarea code-textarea" rows="20">{
+                      "participants": [
+                        {
+                          "id": 1,
+                          "name": "Location 1",
+                          "latitude": -6.2088,
+                          "longitude": 106.8456,
+                          "categories": [1, 2],
+                          "regency": "Jakarta",
+                          "subdistrict": "Central"
+                        }
+                      ]
+                    }</textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="data-tab-content" id="kabupaten-data">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Data Kabupaten/Kota</h3>
+                  <div class="button-group" style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <button class="btn-primary" onclick="saveKabupatenData()">Save</button>
+                    <button class="btn-secondary" onclick="loadKabupatenFromFile()">Load File</button>
+                    <button class="btn-secondary" onclick="loadKabupatenSaved()">Load Saved</button>
+                    <button class="btn-secondary" onclick="exportKabupatenData()">Export JSON</button>
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div class="form-group">
+                    <label class="form-label">JSON Data</label>
+                    <textarea id="data-kabupaten-json" class="form-textarea code-textarea" rows="20">{
+                      "participants": [
+                        {
+                          "id": 1,
+                          "name": "Location 1",
+                          "latitude": -6.2088,
+                          "longitude": 106.8456,
+                          "categories": [1, 2],
+                          "regency": "Jakarta",
+                          "subdistrict": "Central"
+                        }
+                      ]
+                    }</textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Documents Tab -->
+        
+        <!-- Pengumuman Tab -->
+        <div class="tab-content" id="notifications-tab">
+          <div class="page-header">
+            <h1 class="page-title">Announcement Manager</h1>
+            <p class="page-description">Manage announcements for Beranda (Max 20) and Dashboard Penilaian (Max 30)</p>
+            <button class="btn-primary" onclick="openAnnouncementModal()">+ Add Announcement</button>
+          </div>
+
+          <div style="display:grid; grid-template-columns: 1fr 2fr; gap:24px; margin-bottom:24px;">
+            <!-- Form Panel -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Create Announcement</h3>
+              </div>
+              <div class="card-content">
+                <div class="form-group">
+                  <label class="form-label">Title *</label>
+                  <input type="text" id="ann-title" class="form-input" placeholder="Enter announcement title" maxlength="100">
+                  <small style="color:#9CA3AF;">Max 100 characters</small>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Description *</label>
+                  <textarea id="ann-description" class="form-textarea" rows="4" placeholder="Enter announcement description" maxlength="500"></textarea>
+                  <small style="color:#9CA3AF;">Max 500 characters</small>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Image (Optional)</label>
+                  <div style="border: 2px dashed #D1D5DB; border-radius: 8px; padding: 16px; text-align: center; cursor: pointer;" onclick="document.getElementById('ann-image-input').click()">
+                    <input type="file" id="ann-image-input" style="display:none;" accept="image/*" onchange="handleImageUpload(event)">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:32px; height:32px; margin:0 auto 8px;">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33A3 3 0 0116.5 19.5H6.75z" />
+                    </svg>
+                    <p style="margin:0; font-size:14px; color:#6B7280;">Click to upload or drag and drop</p>
+                    <p style="margin:4px 0 0; font-size:12px; color:#9CA3AF;">Max 1MB (PNG, JPG, GIF)</p>
+                  </div>
+                  <div id="image-preview" style="margin-top:12px; display:none;">
+                    <img id="preview-img" style="max-width:100%; max-height:200px; border-radius:8px;">
+                    <button type="button" class="btn-secondary" style="margin-top:8px; width:100%;" onclick="clearImageUpload()">Remove Image</button>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Announcement Date</label>
+                  <input type="text" id="ann-date" class="form-input" disabled style="background-color:#F3F4F6; color:#000000;">
+                  <small style="color:#9CA3AF;">Auto-filled with today's date</small>
+                </div>
+                
+                <!-- Target Selection -->
+                <div class="form-group">
+                  <label class="form-label">Send To *</label>
+                  <div style="display:flex; flex-direction:column; gap:8px;">
+                    <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                      <input type="checkbox" id="target-beranda" style="width:18px; height:18px; cursor:pointer;">
+                      <span style="color:#374151;">Beranda (Homepage)</span>
+                    </label>
+                    <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                      <input type="checkbox" id="target-dashboard" style="width:18px; height:18px; cursor:pointer;">
+                      <span style="color:#374151;">Dashboard Penilaian</span>
+                    </label>
+                  </div>
+                  <small style="color:#9CA3AF; margin-top:8px;">Select at least one target</small>
+                </div>
+
+                <!-- Dashboard Role Selection (shown when dashboard is checked) -->
+                <div id="dashboard-roles-section" class="form-group" style="display:none;">
+                  <label class="form-label">Send To Which Roles? *</label>
+                  <div style="display:flex; flex-direction:column; gap:8px;">
+                    <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                      <input type="checkbox" id="role-masyarakat" style="width:18px; height:18px; cursor:pointer;">
+                      <span style="color:#374151;">Masyarakat (Community)</span>
+                    </label>
+                    <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                      <input type="checkbox" id="role-kabkota" style="width:18px; height:18px; cursor:pointer;">
+                      <span style="color:#374151;">Kabupaten/Kota (District)</span>
+                    </label>
+                    <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                      <input type="checkbox" id="role-provinsi" style="width:18px; height:18px; cursor:pointer;">
+                      <span style="color:#374151;">Provinsi (Provincial)</span>
+                    </label>
+                  </div>
+                  <small style="color:#9CA3AF; margin-top:8px;">Select at least one role for dashboard announcement</small>
+                </div>
+
+                <div style="display:flex; gap:8px;">
+                  <button class="btn-primary" style="flex:1;" onclick="saveNewAnnouncement()">Save Announcement</button>
+                  <button class="btn-secondary" style="flex:1;" onclick="clearAnnouncementForm()">Clear</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Lists Panel -->
+            <div style="display:flex; flex-direction:column; gap:24px;">
+              <!-- Beranda List -->
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Pengumuman Beranda</h3>
+                  <div style="font-size:14px; color:#6B7280;" id="ann-counter-beranda">0 / 20</div>
+                </div>
+                <div class="card-content">
+                  <div id="announcements-list-beranda" style="display:flex; flex-direction:column; gap:12px; max-height:350px; overflow-y:auto;">
+                    <!-- Beranda announcements will be rendered here -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dashboard List -->
+              <div class="card">
+                <div class="card-header">
+                  <div>
+                    <h3 class="card-title">Pengumuman Dashboard</h3>
+                    <div style="font-size:14px; color:#6B7280; margin-top:8px;">
+                      <label class="form-label" style="margin-bottom:6px;">Filter Berdasarkan Role:</label>
+                      <select id="dashboard-announcement-filter" class="form-select" style="width:100%;" onchange="filterDashboardAnnouncements()">
+                        <option value="all">Semua Role</option>
+                        <option value="masyarakat">Masyarakat (Community)</option>
+                        <option value="kabkota">Kabupaten/Kota (District)</option>
+                        <option value="provinsi">Provinsi (Provincial)</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div style="font-size:14px; color:#6B7280;" id="ann-counter-dashboard">0 / 30</div>
+                </div>
+                <div class="card-content">
+                  <div id="announcements-list-dashboard" style="display:flex; flex-direction:column; gap:12px; max-height:350px; overflow-y:auto;">
+                    <!-- Dashboard announcements will be rendered here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  
+  <!-- Modal for Announcements -->
+  <div id="announcement-modal" class="modal">
+    <div class="modal-content" style="width:90%; max-width:600px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Quick Add Announcement</h3>
+        <button class="modal-close" onclick="closeAnnouncementModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Title *</label>
+          <input type="text" id="modal-ann-title" class="form-input" placeholder="Enter title" maxlength="100">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Description *</label>
+          <textarea id="modal-ann-description" class="form-textarea" rows="4" placeholder="Enter description" maxlength="500"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Image (Optional)</label>
+          <input type="file" id="modal-ann-image" class="form-input" accept="image/*">
+          <small style="color:#9CA3AF;">Max 1MB</small>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Send To *</label>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+              <input type="checkbox" id="modal-target-beranda" style="width:18px; height:18px; cursor:pointer;">
+              <span style="color:#374151;">Beranda</span>
+            </label>
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+              <input type="checkbox" id="modal-target-dashboard" style="width:18px; height:18px; cursor:pointer;">
+              <span style="color:#374151;">Dashboard Penilaian</span>
+            </label>
+          </div>
+        </div>
+        <div id="modal-dashboard-roles" class="form-group" style="display:none;">
+          <label class="form-label">Send To Which Roles? *</label>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+              <input type="checkbox" id="modal-role-masyarakat" style="width:18px; height:18px; cursor:pointer;">
+              <span style="color:#374151;">Masyarakat</span>
+            </label>
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+              <input type="checkbox" id="modal-role-kabkota" style="width:18px; height:18px; cursor:pointer;">
+              <span style="color:#374151;">Kabupaten/Kota</span>
+            </label>
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+              <input type="checkbox" id="modal-role-provinsi" style="width:18px; height:18px; cursor:pointer;">
+              <span style="color:#374151;">Provinsi</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="closeAnnouncementModal()">Cancel</button>
+        <button class="btn-primary" onclick="saveAnnouncementFromModal()">Create</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/announcement-manager.js"></script>
+  <script src="js/dashboard-admin.js"></script>
+  <script src="js/visitor-chart.js"></script>
+  <script src="js/data-manager.js"></script>
+  <script src="js/activity-logger.js"></script>
+  <script>
+// ===== CHART DATA TABLE MANAGEMENT =====
+let chartYears = ['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2024', '2025'];
+const categories = [
+  { name: 'Pratama', class: 'category-pratama', color: '#1D4ED8' },
+  { name: 'Madya', class: 'category-madya', color: '#F59E0B' },
+  { name: 'Mandiri', class: 'category-mandiri', color: '#10B981' }
+];
+
+/**
+ * Render chart data tabel
+ */
+function renderChartTable() {
+  const headerRow = document.getElementById('header-row');
+  const tableBody = document.getElementById('table-body');
+  
+  if (!headerRow || !tableBody) return;
+  
+  // Clear existing headers (keep first th)
+  const firstTh = headerRow.querySelector('th');
+  while (headerRow.children.length > 1) {
+    headerRow.removeChild(headerRow.lastChild);
+  }
+  
+  // Add year headers
+  chartYears.forEach(year => {
+    const th = document.createElement('th');
+    th.className = 'year-header-cell';
+    th.innerHTML = year;
+    headerRow.appendChild(th);
+  });
+  
+  // Clear existing rows
+  tableBody.innerHTML = '';
+  
+    // Add category rows
+    categories.forEach(category => {
+      const row = document.createElement('tr');
+      
+      // Category name cell
+      const categoryCell = document.createElement('td');
+      categoryCell.className = `${category.class}`;
+      categoryCell.innerHTML = category.name;
+      row.appendChild(categoryCell);    // Year data cells
+    chartYears.forEach(year => {
+      const cell = document.createElement('td');
+      const inputId = `${category.name.toLowerCase()}-${year}`;
+      const input = document.createElement('input');
+      input.type = 'number';
+      input.id = inputId;
+      input.className = 'chart-input';
+      input.min = '0';
+      input.value = '0';
+      cell.appendChild(input);
+      row.appendChild(cell);
+    });
+    
+    tableBody.appendChild(row);
+  });
+}
+
+/**
+ * Load chart data ke tabel
+ */
+function loadChartTableData(chartData) {
+  if (!chartData || !chartData.labels) return;
+  
+  // Update years dari data
+  chartYears = chartData.labels.map(label => label.replace(' Covid', ''));
+  renderChartTable();
+  
+  // Populate values
+  if (chartData.datasets) {
+    chartData.datasets.forEach(dataset => {
+      const categoryName = dataset.label.toLowerCase();
+      dataset.data.forEach((value, idx) => {
+        const year = chartYears[idx];
+        const inputId = `${categoryName}-${year}`;
+        const input = document.getElementById(inputId);
+        if (input) {
+          input.value = value || 0;
+        }
+      });
+    });
+  }
+}
+
+/**
+ * Add new year column
+ * PENTING: Simpan data lama sebelum render ulang
+ */
+function addYearColumn() {
+  // Simpan data lama dari tabel sebelum render ulang
+  const oldData = getChartDataFromTable();
+  
+  const lastYear = parseInt(chartYears[chartYears.length - 1]);
+  const newYear = (lastYear + 1).toString();
+  
+  // Check if year already exists
+  if (chartYears.includes(newYear)) {
+    showNotification(`⚠️ Tahun ${newYear} sudah ada`, 'warning');
+    return;
+  }
+  
+  // Tambah tahun baru
+  chartYears.push(newYear);
+  renderChartTable();
+  
+  // Restore data lama ke input fields
+  if (oldData && oldData.datasets) {
+    oldData.datasets.forEach(dataset => {
+      const categoryName = dataset.label.toLowerCase();
+      dataset.data.forEach((value, idx) => {
+        const year = oldData.labels[idx].replace(' Covid', '');
+        const inputId = `${categoryName}-${year}`;
+        const input = document.getElementById(inputId);
+        if (input) {
+          input.value = value || 0;
+        }
+      });
+    });
+  }
+  
+  showNotification(`✅ Tahun ${newYear} ditambahkan`, 'success');
+}
+
+/**
+ * Open delete year modal dengan checkbox multi-select
+ */
+function openDeleteYearModal() {
+  const modal = document.getElementById('delete-year-modal');
+  const optionsContainer = document.getElementById('delete-year-options');
+  
+  // Clear previous options
+  optionsContainer.innerHTML = '';
+  
+  // Generate checkbox untuk setiap tahun (except jika hanya 1 tahun)
+  if (chartYears.length <= 1) {
+    optionsContainer.innerHTML = '<p style="color:#9CA3AF; text-align:center; grid-column:1/-1;">Minimal harus ada 1 tahun. Tidak bisa menghapus semua.</p>';
+  } else {
+    chartYears.forEach(year => {
+      const label = document.createElement('label');
+      label.style.cssText = `
+        display: flex;
+        align-items: center;
+        padding: 8px 10px;
+        background: #2D3748;
+        color: #E5E7EB;
+        border: 1px solid #374151;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.2s;
+        font-size: 13px;
+      `;
+      
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.value = year;
+      checkbox.className = 'delete-year-checkbox';
+      checkbox.style.cssText = `margin-right: 8px; cursor: pointer;`;
+      
+      label.onmouseover = function() {
+        this.style.background = '#3A4556';
+        this.style.borderColor = '#4B5563';
+      };
+      label.onmouseout = function() {
+        this.style.background = '#2D3748';
+        this.style.borderColor = '#374151';
+      };
+      
+      label.appendChild(checkbox);
+      label.appendChild(document.createTextNode(year));
+      optionsContainer.appendChild(label);
+    });
+  }
+  
+  // Show modal
+  modal.style.display = 'flex';
+}
+
+/**
+ * Close delete year modal
+ */
+function closeDeleteYearModal() {
+  const modal = document.getElementById('delete-year-modal');
+  modal.style.display = 'none';
+}
+
+/**
+ * Confirm delete selected years
+ */
+function confirmDeleteSelectedYears() {
+  const checkboxes = document.querySelectorAll('.delete-year-checkbox:checked');
+  
+  if (checkboxes.length === 0) {
+    showNotification('⚠️ Pilih minimal 1 tahun untuk dihapus', 'warning');
+    return;
+  }
+  
+  const yearsToDelete = Array.from(checkboxes).map(cb => cb.value);
+  
+  // Check if deleting all years
+  if (yearsToDelete.length >= chartYears.length) {
+    showNotification('❌ Minimal harus ada 1 tahun. Tidak bisa menghapus semua.', 'error');
+    return;
+  }
+  
+  const yearsText = yearsToDelete.join(', ');
+  if (confirm(`Hapus tahun: ${yearsText}? \n\nData tahun ini akan dihapus dan tidak bisa dikembalikan.`)) {
+    // Filter out deleted years
+    chartYears = chartYears.filter(y => !yearsToDelete.includes(y));
+    renderChartTable();
+    closeDeleteYearModal();
+    showNotification(`✅ ${yearsToDelete.length} tahun berhasil dihapus`, 'success');
+  }
+}
+
+/**
+ * Confirm delete year (legacy - kept for compatibility)
+ */
+function confirmDeleteYear(year) {
+  if (confirm(`Hapus tahun ${year}? Data tahun ini akan dihapus dan tidak bisa dikembalikan.`)) {
+    chartYears = chartYears.filter(y => y !== year);
+    renderChartTable();
+    closeDeleteYearModal();
+    showNotification(`✅ Tahun ${year} berhasil dihapus`, 'success');
+  }
+}
+
+/**
+ * Get chart data dari tabel inputs
+ * PENTING: Hanya membaca data dari tahun yang ada di chartYears array saat ini
+ * Ini mencegah bug dimana data tahun yang dihapus masih tersimpan
+ */
+function getChartDataFromTable() {
+  const datasets = [];
+  const categoryColors = {
+    'Pratama': { bg: '#1D4ED8', border: '#1D4ED8' },
+    'Madya': { bg: '#F59E0B', border: '#F59E0B' },
+    'Mandiri': { bg: '#10B981', border: '#10B981' }
+  };
+  
+  categories.forEach(category => {
+    const data = [];
+    // PENTING: Hanya iterate tahun yang ada di chartYears saat ini
+    chartYears.forEach(year => {
+      const inputId = `${category.name.toLowerCase()}-${year}`;
+      const input = document.getElementById(inputId);
+      if (input) {
+        data.push(parseInt(input.value) || 0);
+      } else {
+        // Jika input tidak ada, gunakan 0
+        data.push(0);
+      }
+    });
+    
+    const colors = categoryColors[category.name];
+    datasets.push({
+      label: category.name,
+      data: data,
+      backgroundColor: colors.bg,
+      borderColor: colors.border
+    });
+  });
+  
+  // Create labels (2020 -> "2020 Covid")
+  // PENTING: Labels harus match dengan chartYears yang aktif saat ini
+  const labels = chartYears.map(year => year === '2020' ? '2020 Covid' : year);
+  
+  return {
+    chartTitle: "Penghargaan Jumlah Desa/Kelurahan Berseri",
+    labels: labels,
+    datasets: datasets
+  };
+}
+
+// ===== CHART EDITOR INITIALIZATION =====
+document.addEventListener('DOMContentLoaded', function() {
+  // Render tabel kosong terlebih dahulu
+  renderChartTable();
+  
+  // Load data saat page load
+  setTimeout(function() {
+    loadChartDataFromStorage();
+  }, 500);
+});
+
+// ===== ACTIVE NOTIFICATIONS COUNTER =====
+/**
+ * Hitung dan tampilkan jumlah pengumuman aktif (visible) dari localStorage
+ * Menghitung dari kedua target: beranda dan dashboard
+ */
+function updateActiveNotificationsCount() {
+    try {
+        // Ambil pengumuman dari kedua storage
+        const berandaAnnouncements = JSON.parse(localStorage.getItem('berseri_announcements_beranda')) || [];
+        const dashboardAnnouncements = JSON.parse(localStorage.getItem('berseri_announcements_dashboard')) || [];
+        
+        // Hitung yang visible
+        const activeBerandaCount = berandaAnnouncements.filter(a => a.visible !== false).length;
+        const activeDashboardCount = dashboardAnnouncements.filter(a => a.visible !== false).length;
+        
+        // Total aktif
+        const totalActive = activeBerandaCount + activeDashboardCount;
+        
+        // Breakdown info
+        const berandaDisplay = `${activeBerandaCount} di Beranda`;
+        const dashboardDisplay = `${activeDashboardCount} di Dashboard`;
+        const breakdownInfo = totalActive > 0 ? `${berandaDisplay} + ${dashboardDisplay}` : 'Tidak ada pengumuman aktif';
+        
+        // Update DOM
+        const countElement = document.getElementById('active-notifications-count');
+        const changeElement = document.getElementById('active-notifications-change');
+        
+        if (countElement) {
+            countElement.textContent = totalActive;
+        }
+        
+        if (changeElement) {
+            changeElement.textContent = breakdownInfo;
+        }
+        
+    } catch (error) {
+        console.error('Error updating active notifications count:', error);
+        const countElement = document.getElementById('active-notifications-count');
+        const changeElement = document.getElementById('active-notifications-change');
+        if (countElement) countElement.textContent = '0';
+        if (changeElement) changeElement.textContent = 'Error loading data';
+    }
+}
+
+/**
+ * Listen untuk perubahan pengumuman dari tab lain atau manager
+ */
+function setupNotificationsListener() {
+    // Update saat page load
+    updateActiveNotificationsCount();
+    
+    // Update saat ada perubahan pengumuman
+    window.addEventListener('announcementsUpdated', function(event) {
+        updateActiveNotificationsCount();
+    });
+    
+    // Update setiap detik untuk memastikan sinkronisasi real-time
+    setInterval(updateActiveNotificationsCount, 1000);
+}
+
+// Setup user info and permissions (after auth check in dashboard-admin.js)
+document.addEventListener('DOMContentLoaded', function() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    
+    // Setup user info
+    const userRole = document.createElement('div');
+    userRole.className = 'user-info';
+    userRole.innerHTML = `
+        <span class="user-name">${currentUser.username}</span>
+        <span class="user-role">${currentUser.role}</span>
+        <button onclick="logout()" class="btn-secondary">Logout</button>
+    `;
+    document.querySelector('.header').appendChild(userRole);
+
+    // Setup permissions
+    setupPermissions(currentUser.permissions);
+    
+    // Setup active notifications counter
+    setupNotificationsListener();
+});
+
+function setupPermissions(permissions) {
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+        const tab = item.getAttribute('data-tab');
+        if (!permissions.includes(tab) && tab !== 'dashboard') {
+            item.style.display = 'none';
+        }
+    });
+}
+
+function logout() {
+    localStorage.removeItem('currentUser');
+    window.location.replace('login.html');
+}
+</script>
+</body>
+</html>

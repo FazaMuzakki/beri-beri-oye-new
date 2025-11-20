@@ -1,0 +1,38 @@
+{
+  "chartTitle": "Penghargaan Jumlah Desa/Kelurahan Berseri",
+  "labels": [
+    "2012",
+    "2013",
+    "2014",
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020 Covid",
+    "2021",
+    "2022",
+    "2024",
+    "2025"
+  ],
+  "datasets": [
+    {
+      "label": "Pratama",
+      "data": [20, 45, 38, 39, 34, 39, 40, 40, 0, 50, 60, 70, 100],
+      "backgroundColor": "#1D4ED8",
+      "borderColor": "#1D4ED8"
+    },
+    {
+      "label": "Madya",
+      "data": [13, 25, 25, 20, 30, 26, 28, 24, 0, 33, 35, 42, 60],
+      "backgroundColor": "#F59E0B",
+      "borderColor": "#F59E0B"
+    },
+    {
+      "label": "Mandiri",
+      "data": [10, 10, 10, 15, 8, 14, 11, 16, 0, 16, 25, 18, 37],
+      "backgroundColor": "#10B981",
+      "borderColor": "#10B981"
+    }
+  ]
+}

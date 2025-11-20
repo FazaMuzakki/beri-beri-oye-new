@@ -1,0 +1,346 @@
+/* Mobile devices (portrait) */
+@media screen and (max-width: 576px) {
+    /* Header */
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1rem;
+        margin: 0;
+    }
+
+    /* Quick Action Cards */
+    .quick-action-card {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .quick-action-content {
+        width: 100%;
+        text-align: center;
+    }
+
+    .quick-action-content h3 {
+        font-size: 1rem;
+        margin-bottom: 0.25rem;
+        word-wrap: break-word;
+    }
+
+    .quick-action-content p {
+        font-size: 0.875rem;
+        word-wrap: break-word;
+    }
+
+    .header-right {
+        width: 100%;
+        justify-content: space-between;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .role-select, .logout-btn {
+        width: 100%;
+        margin: 0;
+    }
+
+    /* Navigation */
+    .nav-menu {
+        display: none;
+    }
+
+    .nav-menu.active {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: white;
+        z-index: 1000;
+        padding: 2rem;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Grid Layout */
+    .grid-cols-1 {
+        grid-template-columns: 1fr;
+    }
+
+    /* Announcements */
+    .announcement-slide {
+        flex-direction: column;
+    }
+
+    .announcement-image {
+        width: 100%;
+        height: 200px;
+        margin-bottom: 1rem;
+        object-fit: cover;
+    }
+
+    /* Tables */
+    .submissions-table {
+        overflow-x: auto;
+        margin: 0 -1rem;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+        min-width: 800px;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+    
+    th, td {
+        padding: 0.75rem 0.5rem;
+    }
+
+    /* Forms */
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+
+    /* Buttons */
+    .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Cards */
+    .stat-card,
+    .quick-action-card {
+        padding: 1rem;
+    }
+
+    /* Modal */
+    .modal-content {
+        width: 95%;
+        margin: 1rem;
+        padding: 1rem;
+    }
+}
+
+/* Tablets (portrait) */
+@media screen and (min-width: 577px) and (max-width: 768px) {
+    /* Grid Layout */
+    .grid-cols-1.md\:grid-cols-3 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    /* Stats Cards */
+    .stat-card {
+        min-height: auto;
+        padding: 0.875rem;
+    }
+
+    .stat-value {
+        font-size: 1.25rem;
+    }
+
+    /* Navigation */
+    .nav-menu {
+        gap: 1rem;
+    }
+
+    /* Announcements */
+    .announcement-image {
+        width: 150px;
+        height: 100px;
+        object-fit: cover;
+    }
+
+    /* Tables */
+    .submissions-table {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 900px;
+    }
+
+    /* Forms and Buttons */
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .btn {
+        min-width: 120px;
+    }
+
+    /* Modal */
+    .modal-content {
+        width: 80%;
+        margin: 2rem auto;
+    }
+}
+
+/* Tablets (landscape) and small desktops */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    /* Grid Layout */
+    .grid-cols-1.md\:grid-cols-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Images */
+    .announcement-image {
+        width: 180px;
+        height: 120px;
+        object-fit: cover;
+    }
+
+    /* Spacing */
+    .p-8 {
+        padding: 1.5rem;
+    }
+
+    /* Tables */
+    table {
+        min-width: 1000px;
+    }
+
+    /* Navigation */
+    .nav-menu {
+        gap: 1.5rem;
+    }
+}
+
+/* Large desktops */
+@media screen and (min-width: 1025px) {
+    /* Container */
+    .max-w-7xl {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    /* Grid Layout */
+    .grid-cols-1.md\:grid-cols-3 {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    /* Navigation */
+    .nav-menu {
+        gap: 2rem;
+    }
+
+    /* Tables */
+    table {
+        width: 100%;
+        min-width: auto;
+    }
+
+    /* Buttons */
+    .btn {
+        transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+        transform: translateY(-1px);
+    }
+}
+
+/* Universal responsive adjustments */
+@media screen and (max-width: 1024px) {
+    /* Cards */
+    .stat-card {
+        padding: 1.25rem;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        text-align: left;
+    }
+
+    .stat-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+        line-height: 1.2;
+    }
+
+    .stat-icon {
+        flex-shrink: 0;
+    }
+
+    .quick-action-card {
+        padding: 1rem;
+    }
+
+    /* Filters and Search */
+    .filter-bar {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .search-input,
+    .filter-select {
+        width: 100%;
+    }
+
+    /* Typography */
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    /* Spacing */
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* Accessibility */
+    button, 
+    a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+    }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+
+    body {
+        print-color-adjust: exact;
+    }
+}

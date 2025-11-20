@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan - BERSERI</title>
+    <link rel="icon" type="image/png" href="Asset/logo-berseri.webp" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Droid+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FFFFFF;
+            --bg-soft: #F7FAF7;
+            --ink: #111827;
+            --muted: #374151;
+            --primary: #065F46;
+            --primary-weak: #D1FAE5;
+            --border: #E5E7EB;
+            --focus: #10B981;
+        }
+        html, body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif; }
+        body { font-size: 18px; line-height: 1.6; background: var(--bg); color: var(--ink); }
+
+        .btn { min-height:48px; display:inline-flex; align-items:center; justify-content:center; padding:12px 20px; border-radius:12px; font-weight:600; }
+        .btn-primary { background:var(--primary); color:#fff; border:2px solid var(--primary); box-shadow:0 1px 0 rgba(0,0,0,0.05); }
+        .btn-primary:hover{ filter:brightness(1.05); }
+        .btn-primary:focus{ outline:3px solid transparent; box-shadow:0 0 0 3px var(--focus); }
+        .btn-secondary { background:#fff; color:var(--primary); border:2px solid var(--primary); }
+        .btn-secondary:hover{ background:var(--primary-weak); }
+        .btn-secondary:focus{ outline:3px solid transparent; box-shadow:0 0 0 3px var(--focus); }
+
+        /* Cards and icons */
+        .card { background:#fff; border:1px solid var(--border); border-radius:16px; padding:24px; }
+        .icon-round { width:40px; height:40px; border-radius:9999px; display:inline-flex; align-items:center; justify-content:center; background:var(--primary-weak); color:var(--primary); font-weight:800; }
+        a{ color:var(--primary); } a:hover{ text-decoration:underline; }
+        :focus-visible{ outline:3px solid var(--focus); outline-offset:2px; }
+
+        /* Nav and dropdown styling */
+        .nav-link {
+          position: relative;
+          padding: 0.5rem 0.75rem;
+          font-family: 'Poppins', sans-serif;
+          color: var(--muted);
+          font-weight: normal;
+          transition: all 0.2s ease;
+          text-decoration: none !important;
+        }
+        
+        .nav-link:hover {
+          background-color: #a9e66c !important;
+          color: #000000 !important;
+          border-radius: 6px;
+          font-weight: 600;
+          text-decoration: none !important;
+        }
+        
+        .btn.btn-primary {
+          background-color: #a9e66c !important;
+          color: #000000 !important;
+          font-family: 'Poppins', sans-serif !important;
+          font-weight: 600 !important;
+          border: 2px solid #a9e66c !important;
+          transition: all 0.2s ease !important;
+          padding: 0.5rem 0.75rem !important;
+          min-height: auto !important;
+          text-decoration: none !important;
+          border-radius: 6px !important;
+          outline: none !important;
+          box-shadow: none !important;
+          -webkit-tap-highlight-color: transparent !important;
+        }
+        
+        .btn.btn-primary:hover {
+          background-color: #ffffff !important;
+          color: #000000 !important;
+          font-weight: normal !important;
+          border: 2px solid #a9e66c !important;
+          text-decoration: none !important;
+        }
+        
+        /* Tambahkan active state terpisah */
+        .btn.btn-primary:active {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+            font-weight: normal !important;
+            border: 2px solid #a9e66c !important;
+            transform: translateY(1px);
+        }
+
+        /* Tambahkan focus-visible state */
+        .btn.btn-primary:focus-visible {
+            outline: none !important;
+            box-shadow: none !important;
+            border: 2px solid #a9e66c !important;
+            background-color: #a9e66c !important;
+        }
+
+        .md\:flex.items-center.gap-6 {
+            gap: 2px;
+        }
+
+        /* Dropdown styling */
+        .group:hover .hidden {
+            display: block;
+        }
+
+        /* Animation for dropdown */
+        .group div {
+            transform-origin: top;
+            transform: scale(0.95);
+            transition: all 0.1s ease-out;
+        }
+
+        .group:hover div {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        /* Ensure dropdown is above other content */
+        .relative {
+            position: relative;
+            z-index: 50;
+        }
+
+        /* Card hover effects */
+        .card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Gentle shake animation */
+        @keyframes gentleShake {
+            0% { transform: translateY(0); }
+            25% { transform: translateY(-2px); }
+            75% { transform: translateY(2px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Marquee animation */
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-marquee {
+            display: inline-block;
+            min-width: 100%;
+            animation: marquee 15s linear infinite;
+            will-change: transform;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+        
+        /* Desktop Navigation Styles */
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.95);
+        }
+
+        /* Mobile Navigation Styles */
+    @media (max-width: 768px) {
+      .NavigationSlideOut {
+        font-family: 'Poppins', sans-serif;
+        width: 300px;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -300px;
+        background-color: #202325;
+        float: right;
+        z-index: 1000;
+        transition: right 0.2s cubic-bezier(0.01, 0.1, 0.01, 1);
+        will-change: right;
+      }
+
+      .navbar {
+        width: 300px;
+        height: auto;
+        display: block;
+        margin: 0;
+        padding: 100px 0 0 0;
+      }
+
+      .NavigationTab {
+        width: 300px;
+        min-height: 3em;
+        display: block;
+        font-size: 18px;
+        transition: all 0.3s ease;
+        margin-bottom: 10px;
+      }
+
+      .NavigationTab a {
+        text-decoration: none;
+      }
+
+      .NavigationTab a p {
+        font-family: 'Poppins', sans-serif;
+        color: #ffffff;
+        margin: 0 auto;
+        padding: 8px 0;
+        vertical-align: middle;
+        font-size: 1em;
+        line-height: 1.5;
+        width: 80%;
+        transition: all 0.2s ease;
+        font-weight: normal;
+      }
+
+      .NavigationTab:hover p {
+        width: 90%;
+        color: #000000;
+        background-color: #a9e66c;
+        border-radius: 6px;
+        padding: 8px 12px;
+        font-weight: 600;
+      }
+
+      .menuIcon {
+        background: #a9e66c;
+        position: relative;
+        margin: 8px 0;
+        padding: 12px;
+        z-index: 1002;
+        cursor: pointer;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease;
+      }
+
+      .menuIcon div {
+        width: 24px;
+        height: 2px;
+        background: #000000;
+        margin: 3px;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                    opacity 0.2s ease;
+        transform-origin: center;
+        border-radius: 2px;
+      }
+
+      .menuIcon:hover {
+        background: #F1F1EF;
+      }
+
+      .menuIcon.on .line_one {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      .menuIcon.on .line_two {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+
+      .menuIcon.on .line_three {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      /* Dropdown styling */
+      .dropdown-content {
+        display: block;
+        opacity: 0;
+        height: 0;
+        overflow: hidden;
+        background: transparent;
+        transform-origin: top;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        pointer-events: none;
+      }
+
+      .dropdown-content a p {
+        padding: 8px 2rem !important;
+        font-size: 0.9em !important;
+        transition: all 0.2s ease;
+        color: #dfdfdf;
+        font-weight: normal;
+        opacity: 0;
+        transform: translateY(-5px);
+        transition: all 0.2s ease;
+      }
+
+      .dropdown-content.show {
+        opacity: 1;
+        height: auto;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .dropdown-content.show a p {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Arrow indicator for data dropdown */
+      #mobile-dropdown-btn p {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        padding-right: 25px !important;
+      }
+
+      #mobile-dropdown-btn svg {
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        right: 4px;
+        transition: transform 0.3s ease;
+      }
+
+      .NavigationTab.dropdown.active #mobile-dropdown-btn svg {
+        transform: rotate(180deg);
+      }
+
+      /* Hover effects for dropdown items */
+      .dropdown-content a:hover p {
+        background-color: #a9e66c;
+        color: #3C3C3C;
+        font-weight: 600;
+        border-radius: 6px;
+      }
+
+      /* Additional spacing for dropdown items */
+      .submenu-items {
+        padding: 5px 0;
+      }
+
+      .submenu-items a p {
+        margin: 5px auto !important;
+        width: 80%;
+      }
+
+      .submenu-items a:hover p {
+        width: 90%;
+      }
+    }
+        
+    /* Desktop Dropdown styles */
+    .dropdown-menu {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: all 0.2s ease-in-out;
+    }
+
+    .dropdown-menu a {
+      color: #374151;
+      transition: all 0.2s ease;
+      text-decoration: none !important;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #a9e66c;
+      color: #000000;
+      font-weight: 600;
+    }
+
+    /* Update button styles */
+    #desktop-dropdown-btn {
+      font-family: 'Poppins', sans-serif;
+      font-weight: normal;
+    }
+
+    #desktop-dropdown-btn:hover {
+      background-color: #a9e66c;
+      color: #000000;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    /* Dark Mode Root Variables */
+:root.dark-mode {
+    --bg: #1a1a1a;
+    --bg-soft: #2d2d2d;
+    --ink: #ffffff;
+    --muted: #b0b0b0;
+    --primary: #087959;
+    --primary-weak: #0f4c3a;
+    --border: #404040;
+    --focus: #10b981;
+}
+
+/* Dark Mode Body */
+body.dark-mode {
+    background: var(--bg);
+    color: var(--ink);
+}
+
+    /* Dark Mode Banner - Running Text */
+    body.dark-mode #banner-top {
+        background-color: #2d2d2d !important;
+        border-bottom-color: #404040 !important;
+    }
+
+    body.dark-mode #banner-top .whitespace-nowrap {
+        color: #b0b0b0 !important;
+    }
+
+    body.dark-mode #banner-top .animate-marquee {
+        color: #b0b0b0 !important;
+    }
+
+    body.dark-mode #banner-top .text-gray-700 {
+        color: #b0b0b0 !important;
+    }
+
+/* Icon Toggle (Sun/Moon) */
+.sun-icon {
+    display: inline-block;
+}
+
+.moon-icon {
+    display: none;
+}
+
+body.dark-mode .sun-icon {
+    display: none;
+}
+
+body.dark-mode .moon-icon {
+    display: inline-block;
+}
+
+/* Dark Mode Header */
+body.dark-mode header {
+    background-color: #2d2d2d;
+    border-color: var(--border);
+}
+
+/* Dark Mode Navigation */
+body.dark-mode .nav-link {
+    color: #b0b0b0 !important;
+}
+
+body.dark-mode .nav-link:hover {
+    background-color: #a9e66c !important;
+    color: #000000 !important;
+}
+
+/* Dark Mode Dropdown */
+body.dark-mode .dropdown-menu {
+    background-color: #2d2d2d;
+    border-color: var(--border);
+}
+
+body.dark-mode .dropdown-menu a {
+    color: #b0b0b0;
+}
+
+body.dark-mode .dropdown-menu a:hover {
+    background-color: #a9e66c !important;
+    color: #000000 !important;
+}
+
+/* Dark Mode Main Content */
+body.dark-mode main {
+    background-color: var(--bg);
+    color: var(--ink);
+}
+
+/* Dark Mode Cards */
+body.dark-mode .card {
+    background-color: #2d2d2d;
+    border-color: #3d3d3d;
+    color: var(--ink);
+}
+
+body.dark-mode .card h3 {
+    color: #a9e66c !important;
+}
+
+body.dark-mode .card p:not(.text-sm) {
+    color: #b0b0b0;
+}
+
+body.dark-mode .card .text-sm {
+    color: #b0b0b0;
+}
+
+/* Dark Mode Button */
+body.dark-mode .btn.btn-primary {
+    background-color: #a9e66c !important;
+    color: #000000 !important;
+    border: 2px solid #a9e66c !important;
+}
+
+body.dark-mode .btn.btn-primary:hover {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border: 2px solid #000000 !important;
+}
+
+/* Dark Mode Download Section */
+body.dark-mode .download-section {
+    background-color: #2d2d2d;
+}
+
+body.dark-mode .bg-white.rounded-lg {
+    background-color: #3d3d3d !important;
+    border-color: #404040 !important;
+}
+
+body.dark-mode .file-title {
+    color: #a9e66c !important;
+}
+
+body.dark-mode .file-details {
+    color: #b0b0b0 !important;
+}
+
+body.dark-mode .file-details p {
+    color: #b0b0b0 !important;
+}
+
+
+
+body.dark-mode .preview-btn:hover {
+    background-color: #a9e66c !important;
+    color: #000000 !important;
+    border-color: #a9e66c !important;
+}
+
+body.dark-mode .download-btn {
+    background-color: #a9e66c !important;
+    color: #000000 !important;
+    border: 1px solid #a9e66c !important;
+}
+
+body.dark-mode .download-btn:hover {
+    background-color: #90d94f !important;
+}
+
+/* Dark Mode Complete Footer */
+body.dark-mode footer {
+    background-color: #2d2d2d !important;
+    border-top: 1px solid #404040 !important;
+}
+
+body.dark-mode footer.bg-\[\#F1F1EF\] {
+    background-color: #2d2d2d !important;
+}
+
+body.dark-mode footer h3 {
+    color: #f08519 !important;
+}
+
+body.dark-mode footer address {
+    color: #b0b0b0 !important;
+}
+
+body.dark-mode footer address p {
+    color: #b0b0b0 !important;
+}
+
+body.dark-mode footer address div {
+    color: #b0b0b0 !important;
+}
+
+body.dark-mode footer ul li a {
+    color: #b0b0b0 !important;
+}
+
+body.dark-mode footer ul li a:hover {
+    color: #f08519 !important;
+}
+
+body.dark-mode footer .flex.items-center.gap-2 {
+    color: #b0b0b0 !important;
+}
+
+body.dark-mode footer .flex.items-center.gap-2 a {
+    color: #b0b0b0 !important;
+}
+
+body.dark-mode footer .flex.items-center.gap-2 a:hover {
+    color: #f08519 !important;
+}
+
+body.dark-mode footer .flex.items-center.gap-2 span {
+    color: #b0b0b0 !important;
+}
+
+body.dark-mode footer .flex.items-center.gap-2 a:hover span {
+    color: #f08519 !important;
+}
+
+body.dark-mode footer svg {
+    stroke: #b0b0b0 !important;
+    color: #b0b0b0 !important;
+}
+
+body.dark-mode footer a:hover svg {
+    stroke: #f08519 !important;
+    color: #f08519 !important;
+}
+
+body.dark-mode footer .text-center {
+    background-color: transparent !important;
+}
+
+body.dark-mode footer .text-center p {
+    color: #b0b0b0 !important;
+}
+
+body.dark-mode footer .border-t-2 {
+    border-top-color: #f08519 !important;
+}
+
+/* Dark Mode Grid */
+body.dark-mode footer .grid.gap-8 {
+    background-color: transparent !important;
+}
+
+body.dark-mode footer .grid.gap-8 div {
+    background-color: transparent !important;
+}
+
+/* Dark Mode Hero Section - PANDUAN PROGRAM BERSERI */
+    body.dark-mode .bg-white.rounded-1xl.p-6 {
+        background-color: #1a1a1a !important;
+        border-color: #404040 !important;
+    }
+
+    body.dark-mode .bg-white.rounded-1xl.p-6 h1 {
+        color: #7FE7C9 !important;
+    }
+
+    body.dark-mode .bg-white.rounded-1xl.p-6 span {
+        background-color: #f08519 !important;
+    }
+
+    /* Dark Mode Tahapan Section */
+    body.dark-mode .border-b-4.border-\[\#f08519\] {
+        border-bottom-color: #f08519 !important;
+        background-color: transparent !important;
+    }
+
+    body.dark-mode .border-b-4.border-\[\#f08519\] h2 {
+        color: #7FE7C9 !important;
+    }
+
+    body.dark-mode .tahapan-grid .card h3 {
+        color: #a9e66c !important;
+    }
+
+    body.dark-mode .tahapan-grid .card p:not(.text-sm) {
+        color: #b0b0b0 !important;
+    }
+
+    body.dark-mode .tahapan-grid .card .text-sm {
+        color: #b0b0b0 !important;
+    }
+
+    /* Dark Mode Unduhan Dokumen Section */
+    body.dark-mode .download-section {
+        background-color: #1a1a1a !important;
+    }
+
+    body.dark-mode .download-grid {
+        background-color: transparent !important;
+    }
+
+    body.dark-mode .download-item {
+        background-color: #2d2d2d !important;
+        border-color: #404040 !important;
+    }
+
+    body.dark-mode .download-item:hover {
+        background-color: #333333 !important;
+    }
+
+    body.dark-mode .file-title {
+        color: #a9e66c !important;
+    }
+
+    body.dark-mode .file-details {
+    border-top-color: #b0b0b0 !important;
+    color: #b0b0b0 !important;
+    }
+
+    body.dark-mode .file-details p {
+        color: #b0b0b0 !important;
+    }
+
+    body.dark-mode .preview-btn {
+        color: #ffffff !important;
+        border-color: #1a1a1a !important;
+        background-color: #1a1a1a !important;
+    }
+
+    body.dark-mode .preview-btn:hover {
+        background-color: #a9e66c !important;
+        color: #000000 !important;
+        border-color: #a9e66c !important;
+    }
+
+    body.dark-mode .download-btn {
+        background-color: #a9e66c !important;
+        color: #000000 !important;
+        border: 1px solid #a9e66c !important;
+    }
+
+    body.dark-mode .download-btn:hover {
+        background-color: #90d94f !important;
+    }
+
+    /* Dark Mode Complete Footer */
+    body.dark-mode footer {
+        background-color: #2d2d2d !important;
+        border-top: 1px solid #404040 !important;
+    }
+
+    body.dark-mode footer.bg-\[\#F1F1EF\] {
+        background-color: #2d2d2d !important;
+    }
+
+    body.dark-mode footer h3 {
+        color: #f08519 !important;
+    }
+
+    body.dark-mode footer address {
+        color: #b0b0b0 !important;
+    }
+
+    body.dark-mode footer address p {
+        color: #b0b0b0 !important;
+    }
+
+    body.dark-mode footer address div {
+        color: #b0b0b0 !important;
+    }
+
+    body.dark-mode footer ul li a {
+        color: #b0b0b0 !important;
+    }
+
+    body.dark-mode footer ul li a:hover {
+        color: #f08519 !important;
+    }
+
+    body.dark-mode footer .flex.items-center.gap-2 {
+        color: #b0b0b0 !important;
+    }
+
+    body.dark-mode footer .flex.items-center.gap-2 a {
+        color: #b0b0b0 !important;
+    }
+
+    body.dark-mode footer .flex.items-center.gap-2 a:hover {
+        color: #f08519 !important;
+    }
+
+    body.dark-mode footer .flex.items-center.gap-2 span {
+        color: #b0b0b0 !important;
+    }
+
+    body.dark-mode footer .flex.items-center.gap-2 a:hover span {
+        color: #f08519 !important;
+    }
+
+    body.dark-mode footer svg {
+        stroke: #b0b0b0 !important;
+        color: #b0b0b0 !important;
+    }
+
+    body.dark-mode footer a:hover svg {
+        stroke: #f08519 !important;
+        color: #f08519 !important;
+    }
+
+    body.dark-mode footer .text-center {
+        background-color: transparent !important;
+    }
+
+    body.dark-mode footer .text-center p {
+        color: #b0b0b0 !important;
+    }
+
+    body.dark-mode footer .border-t-2 {
+        border-top-color: #f08519 !important;
+    }
+
+    /* Dark Mode Grid */
+    body.dark-mode footer .grid.gap-8 {
+        background-color: transparent !important;
+    }
+
+    body.dark-mode footer .grid.gap-8 div {
+        background-color: transparent !important;
+    }
+  </style>
+  <style>
+      /* Card Styles */
+      .card {
+        background-color: #fff;
+        border: 1px solid var(--border);
+        border-radius: 1rem;
+        padding: 1.5rem;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 22px rgba(6, 95, 70, 0.08);
+      }
+
+      /* Step Numbers */
+      .card .text-sm {
+        font-family: 'Poppins', sans-serif !important;
+        color: var(--muted);
+        margin-bottom: 0.5rem;
+        font-weight: 600 !important; /* Added bold font weight */
+        font-size: 0.875rem;
+      }
+
+      /* Step Title */
+      .card h3 {
+        font-family: 'Poppins', sans-serif !important;
+        font-weight: 600;
+        color: #065F46 !important;
+        margin-bottom: 0.5rem;
+        font-size: 1.125rem;
+      }
+
+      /* Step Description */
+      .card p:not(.text-sm) {
+        font-family: 'Google Sans', sans-serif !important;
+        color: var(--muted);
+        font-size: 0.875rem;
+        line-height: 1.5;
+        flex-grow: 1;
+      }
+
+      /* Grid Layout */
+      .tahapan-grid {
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      /* Responsive Layout */
+      @media (min-width: 640px) {
+        .tahapan-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .tahapan-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      /* Grid gap adjustments */
+      @media (min-width: 1024px) {
+        .tahapan-grid {
+          gap: 1.5rem;
+        }
+      }
+  </style>
+  <style>
+    /* Add this CSS to your style section */
+/* Responsive download item styles */
+.download-item {
+    transition: all 0.3s ease;
+}
+
+.download-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.file-info {
+    width: 100%;
+}
+
+.download-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+@media (max-width: 640px) {
+    .download-actions {
+        margin-top: 1rem;
+        flex-direction: row;
+        width: 100%;
+    }
+    
+    .download-actions button,
+    .download-actions a {
+        flex: 1;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .file-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .file-title {
+        font-size: 0.95rem;
+    }
+}
+
+@media (min-width: 641px) {
+    .download-actions {
+        flex-direction: row;
+        align-items: start;
+    }
+    
+    .file-info {
+        padding-right: 1rem;
+    }
+}
+
+.download-section {
+    background-color: #F0FDF4;
+    padding: 4rem 0;
+    width: 100%;
+    margin-left: 0;
+    transform: none;
+    position: relative;
+}
+
+.download-section .content-wrapper {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Responsive styles for download items */
+@media (max-width: 640px) {
+    .download-item {
+        flex-direction: column;
+    }
+    
+    .file-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .download-actions {
+        flex-direction: row;
+        justify-content: stretch;
+        margin-top: 1rem;
+        width: 100%;
+    }
+    
+    .preview-btn,
+    .download-btn {
+        flex: 1;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .file-title {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+}
+
+/* Updated button styles for better mobile experience */
+.preview-btn,
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+/* Grid layout improvements */
+.download-grid {
+    display: grid;
+    gap: 1rem;
+    width: 100%;
+}
+
+/* File info layout */
+.file-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.download-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
+
+.download-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(6, 95, 70, 0.1);
+}
+
+/* Fix spacing in download section */
+.download-section > .content-wrapper > h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+/* Add to your existing styles */
+.download-item {
+  min-height: 160px; /* Increased height to accommodate details */
+  display: flex;
+  flex-direction: column;
+}
+
+.file-title {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 1 rem !important; /* Increased to match tahapan title */
+  line-height: 1.75;
+  margin-bottom: 0.5rem;
+  color: var(--primary); /* Match tahapan title color */
+}
+
+.file-details {
+  font-family: 'Google Sans', sans-serif !important;
+  font-size: 0.800rem !important; /* Increased to match tahapan description */
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.download-btn, .preview-btn {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 500;
+}
+
+/* Update button styles */
+.preview-btn, .download-btn {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 0.875rem !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    border-radius: 0.5rem !important;
+    transition: all 0.2s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 110px !important;
+    text-align: center !important;
+}
+
+.preview-btn {
+    color: #000000 !important;
+    background-color: transparent !important;
+    border: 1px solid #e5e7eb !important;
+}
+
+.preview-btn:hover {
+    background-color: #F1F1EF !important;
+    border-color: #a9e66c !important;
+}
+
+.download-btn {
+    background-color: #a9e66c !important;
+    color: #000000 !important;
+    border: 1px solid #a9e66c !important;
+}
+
+.download-btn:hover {
+    background-color: #F1F1EF !important;
+}
+
+@media (max-width: 640px) {
+    .preview-btn, .download-btn {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+}
+
+/* Update container padding and spacing */
+.bg-white.rounded-lg.p-4.border {
+  padding: 1.75rem !important;
+}
+
+.flex.items-center.gap-3 {
+  gap: 1.25rem !important;
+}
+
+/* Add this to your existing styles */
+.file-icon {
+  width: 48px; /* Increased from 32px */
+  height: 48px; /* Increased from 32px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent; /* Remove background */
+}
+
+.file-icon svg {
+  width: 40px; /* Increased from 24px */
+  height: 40px; /* Increased from 24px */
+}
+
+  </style>
+</head>
+<body class="min-h-screen">
+    <!-- Banner Atas (teks berjalan) -->
+    <div id="banner-top" class="w-full bg-gray-100 border-b border-gray-200 overflow-hidden">
+        <div class="whitespace-nowrap animate-marquee py-2 text-gray-700 text-sm font-medium">
+            🌿 Selamat datang di Program Berseri (Bersih & Lestari) – DLH Provinsi Jawa Timur • 
+            📢 Pendaftaran gelombang pertama telah dibuka • 
+            🌱 Mari wujudkan desa bersih, sehat, dan lestari bersama!
+        </div>
+    </div>
+
+<!-- Header -->
+      <header class="bg-[#F1F1EF] border-b sticky top-0 z-[2000]" role="banner" style="border-color: var(--border)">
+          <nav class="max-w-7xl mx-auto px-4 lg:px-6 py-4" role="navigation" aria-label="Navigasi utama">
+              <div class="flex items-center gap-4">
+                  <div class="flex-shrink-0 flex items-center gap-3">
+                      <a href="index.html" class="flex items-center gap-3" aria-label="Berseri Beranda">
+                          <!-- Logo Bulat Berseri Atas -->
+                          <img src="Asset/logo-berseri.webp" alt="Logo Berseri" class="h-16">
+                          <!-- Logo Kata Berseri Atas -->
+                          <img src="Asset/Logo Kata Berseri.webp" alt="Logo DLH" class="h-14">
+                      </a>
+                  </div>
+
+                  <!-- NAV Desktop -->
+                  <ul class="hidden md:flex items-center gap-2 ml-auto">
+    <li><a href="index.html" class="nav-link text-[var(--muted)]">Beranda</a></li>
+    <li><a href="tentang.html" class="nav-link text-[var(--muted)]">Tentang</a></li>
+    
+    <li class="relative group">
+        <button id="desktop-dropdown-btn" class="nav-link text-[var(--muted)] flex items-center gap-1 whitespace-nowrap transition-all duration-200">
+          Data
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+      </button>
+      <div id="desktop-dropdown-menu" class="dropdown-menu absolute left-0 mt-1 w-48 bg-white border rounded-lg shadow-lg py-2 transform origin-top transition duration-200">
+          <a href="detail-berseri.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors duration-200">Detail Berseri</a>
+          <a href="kabupaten-kota.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors duration-200">Kabupaten/Kota</a>
+      </div>
+    </li>
+  
+    <li><a href="panduan.html" class="nav-link text-[var(--muted)]">Panduan</a></li>
+    
+    <!-- Dark Mode Toggle Button -->
+    <li>
+        <button id="theme-toggle" class="nav-link text-[var(--muted)] flex items-center gap-2 whitespace-nowrap" aria-label="Toggle dark mode" title="Toggle Dark Mode">
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+    </li>
+    
+    <li><a href="login.html" class="btn btn-primary no-underline">Login</a></li>
+</ul>
+
+                  <!-- Mobile Navigation -->
+                  <div class="md:hidden ml-auto flex items-center">
+                    <!-- Dark Mode Toggle Button Mobile -->
+                    <button id="theme-toggle-mobile" class="nav-link text-[var(--muted)] flex items-center" aria-label="Toggle dark mode" title="Toggle Dark Mode">
+                        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <svg class="moon-icon hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+
+                    <div class="NavigationSlideOut">
+                        <ul class="navbar">
+                            <li class="NavigationTab"><a href="index.html"><p>Beranda</p></a></li>
+                            <li class="NavigationTab"><a href="tentang.html"><p>Tentang</p></a></li>
+                            <li class="NavigationTab dropdown">
+                                <a href="#" id="mobile-dropdown-btn">
+                                    <p>Data 
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </p>
+                                </a>
+                                <div id="mobile-dropdown" class="dropdown-content">
+                                    <div class="submenu-items">
+                                        <a href="detail-berseri.html"><p>Detail Berseri</p></a>
+                                        <a href="kabupaten-kota.html"><p>Kabupaten/Kota</p></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="NavigationTab"><a href="panduan.html"><p>Panduan</p></a></li>
+                            <li class="NavigationTab"><a href="login.html"><p>Login</p></a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="menuIcon">
+                        <div class="line_one"></div>
+                        <div class="line_two"></div>
+                        <div class="line_three"></div>
+                    </div>
+                </div>
+              
+              </div>
+          </div>
+      </nav>
+  </header>
+
+    <main class="max-w-7xl mx-auto px-4 lg:px-6 flex-grow">
+    <div class="py-10 space-y-10">
+    <!-- Hero kecil -->
+    <section class="rounded-1xl p-6 bg-white">
+  <div class="flex flex-col items-center justify-center">
+    <!-- Hero section title -->
+    <h1 class="text-3xl m-0 text-center relative inline-block"
+        style="font-family: 'Montserrat', sans-serif; font-weight: 800; color: #065F46;">
+      PANDUAN PROGRAM BERSERI
+    </h1>
+    <!-- Garis oranye pendek di bawah teks -->
+    <span class="block mx-auto mt-2 w-16 h-[3px] rounded-full" style="background-color: #f08519;"></span>
+  </div>
+</section>
+
+    <!-- Alur/Tahapan -->
+    <section class="space-y-4">
+      <!-- Tahapan Program section title -->
+      <div class="border-b-4 border-[#f08519] pb-2 mb-4">
+        <h2 class="text-2xl font-bold" style="color: #065F46">Tahapan Program</h2>
+      </div>
+      <ol class="tahapan-grid">
+        <!-- Tahap 1 -->
+        <li class="card relative">
+          <p class="text-sm">Tahap 1</p>
+          <h3>PENGUSULAN DAN PENYUSUNAN BUKTI</h3>
+          <p>Desa/Kelurahan mengusulkan diri ke DLH Kab/Kota dan menyusun bukti pendukung.</p>
+        </li>
+        <!-- Tahap 2 -->
+        <li class="card relative">
+          <p class="text-sm">Tahap 2</p>
+          <h3>PENDAFTARAN DAN PENILAIAN MANDIRI</h3>
+          <p>Desa/Kelurahan melakukan pendaftaran online dan penilaian mandiri kondisi terkini Desa/Kelurahan.</p>
+        </li>
+
+        <!-- Tahap 3 -->
+        <li class="card relative">
+          <p class="text-sm">Tahap 3</p>
+          <h3>PENILAIAN KAB/KOTA</h3>
+          <p>DLH Kab/Kota melakukan penilaian dokumen Kab/Kota. Desa/Kelurahan yang lolos penilaian Kab/Kota akan dilakukan penilaian dokumen oleh Provinsi.</p>
+        </li>
+
+        <!-- Tahap 4 -->
+        <li class="card relative">
+          <p class="text-sm">Tahap 4</p>
+          <h3>SELEKSI ADMINISTRASI</h3>
+          <p>DLH Provinsi melakukan seleksi administrasi. Desa/Kelurahan yang lolos akan dilakukan penilaian dokumen.</p>
+
+        <!-- Tahap 5 -->
+        <li class="card relative">
+          <p class="text-sm">Tahap 5</p>
+          <h3>PENILAIAN DOKUMEN</h3>
+          <p>DLH Provinsi melakukan penilaian dokumen. Desa/Kelurahan yang lolos akan diverifikasi atau dilakukan penilaian lapangan.</p>
+        </li>
+
+        <!-- Tahap 6 -->
+        <li class="card relative">
+          <p class="text-sm">Tahap 6</p>
+          <h3>PENILAIAN LAPANGAN</h3>
+          <p>DLH Provinsi melakukan penilaian lapangan, yaitu verifikasi kesesuain kondisi di lapangan dengan dokumen yang disampaikan</p>
+        </li>
+
+        <!-- Tahap 7 -->
+        <li class="card relative">
+          <p class="text-sm">Tahap 7</p>
+          <h3>PENETAPAN</h3>
+          <p>Desa/Kelurahan yang memenuhi passing grade akan ditetapkan sebagai ditetapkan sebagai Desa/Kelurahan Berseri melalui Keputusan Gubernur</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Unduhan Dokumen -->
+    <section class="space-y-4">
+      <!-- Unduhan Dokumen section title -->
+      <div class="border-b-4 border-[#f08519] pb-2 mb-4">
+        <h2 class="text-2xl font-bold" style="color: #327f4b">Unduhan Dokumen</h2>
+      </div>
+      
+      <!-- Download items container -->
+      <div class="grid gap-4 download-grid" id="downloadContainer">
+        <!-- Download items will be generated by JavaScript -->
+      </div>
+    </section>
+    </div>
+  </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#F1F1EF] text-black py-12">
+        <div class="max-w-7xl mx-auto px-4 lg:px-6">
+        <!-- Update footer grid layout -->
+            <div class="grid gap-8 md:grid-cols-5"> <!-- Changed to 5 columns for better distribution -->
+                <!-- Contact Info - spans 2 columns -->
+                <div class="md:col-span-2">
+                    <h3 class="font-semibold text-lg mb-4 font-poppins text-[#f08519]">Hubungi Kami</h3>
+                        <address class="not-italic space-y-3">
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#3C3C3C">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                </svg>
+                                <p class="text-sm max-w-xs" style="font-family: 'Google Sans', sans-serif; color: #3C3C3C">Jl. Wisata Menanggal No.38, Dukuh Menanggal, Kec. Gayungan, Surabaya, Jawa Timur 60234</p>
+                            </div>
+                        <div class="flex items-center gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#3C3C3C">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                        </svg>
+                                        <p class="text-sm" style="font-family: 'Google Sans', sans-serif; color: #3C3C3C">(031) 8290186</p>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#3C3C3C">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                        </svg>
+                                        <p class="text-sm" style="font-family: 'Google Sans', sans-serif; color: #3C3C3C">dlh@jatimprov.go.id</p>
+                                    </div>
+                                </address>
+                        </div>
+
+                        <!-- Links - spans 1 column -->
+                        <div class="md:col-span-1">
+                            <h3 class="font-semibold text-lg mb-4 font-poppins text-[#f08519]">Tautan</h3>
+                            <ul class="space-y-2">
+                            <li><a href="index.html" class="text-sm text-[#3C3C3C] hover:text-[#F08519] hover:underline transition-colors duration-300">Beranda</a></li>
+                            <li><a href="tentang.html" class="text-sm text-[#3C3C3C] hover:text-[#F08519] hover:underline transition-colors duration-300">Tentang BERSERI</a></li>
+                            <li><a href="panduan.html" class="text-sm text-[#3C3C3C] hover:text-[#F08519] hover:underline transition-colors duration-300">Panduan</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Social Media - spans 1 column -->
+                        <div class="md:col-span-1">
+                            <h3 class="font-semibold text-lg mb-4 font-poppins text-[#f08519]">Media Sosial</h3>
+                            <div class="flex items-center gap-2">
+                            <a href="https://facebook.com/BerseriJatim" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center gap-2 text-[#3C3C3C] hover:text-[#F08519] transition-colors duration-300">
+                                <svg class="h-5 w-5" fill="#3C3C3C" viewBox="0 0 24 24">
+                                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+                                </svg>
+                                <span class="text-sm font-poppins transition-colors duration-300">BerseriJatim</span>
+                            </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Footer copyright section -->
+                    <div class="text-center pt-8 mt-8 border-t-2 border-[#f08519]">
+                    <p class="text-sm" style="font-family: 'Google Sans', sans-serif; color: #3C3C3C">@<span id="year">2023</span> BERSERI - Dinas Lingkungan Hidup Provinsi Jawa Timur</p>
+                    </div>
+        </div>
+    </footer>
+
+    <!-- Script for updating year, navigation and sticky header -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Dark Mode Manager Class
+    class DarkModeManager {
+        constructor() {
+            this.storageKey = 'panduan-darkmode';
+            this.init();
+        }
+
+        init() {
+            const savedMode = localStorage.getItem(this.storageKey);
+            
+            if (savedMode === 'enabled') {
+                this.enableDarkMode();
+            }
+            
+            this.setupToggleButtons();
+        }
+
+        setupToggleButtons() {
+            setTimeout(() => {
+                const toggleBtnDesktop = document.getElementById('theme-toggle');
+                const toggleBtnMobile = document.getElementById('theme-toggle-mobile');
+
+                if (toggleBtnDesktop) {
+                    toggleBtnDesktop.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        this.toggle();
+                    });
+                }
+
+                if (toggleBtnMobile) {
+                    toggleBtnMobile.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        this.toggle();
+                    });
+                }
+            }, 200);
+        }
+
+        enableDarkMode() {
+            document.documentElement.classList.add('dark-mode');
+            document.body.classList.add('dark-mode');
+            localStorage.setItem(this.storageKey, 'enabled');
+            this.updateIcons();
+        }
+
+        disableDarkMode() {
+            document.documentElement.classList.remove('dark-mode');
+            document.body.classList.remove('dark-mode');
+            localStorage.setItem(this.storageKey, 'disabled');
+            this.updateIcons();
+        }
+
+        toggle() {
+            if (document.body.classList.contains('dark-mode')) {
+                this.disableDarkMode();
+            } else {
+                this.enableDarkMode();
+            }
+        }
+
+        updateIcons() {
+            const isDark = document.body.classList.contains('dark-mode');
+            
+            const sunDesktop = document.querySelector('#theme-toggle .sun-icon');
+            const moonDesktop = document.querySelector('#theme-toggle .moon-icon');
+            
+            if (sunDesktop) sunDesktop.style.display = isDark ? 'none' : 'inline-block';
+            if (moonDesktop) moonDesktop.style.display = isDark ? 'inline-block' : 'none';
+
+            const sunMobile = document.querySelector('#theme-toggle-mobile .sun-icon');
+            const moonMobile = document.querySelector('#theme-toggle-mobile .moon-icon');
+            
+            if (sunMobile) sunMobile.style.display = isDark ? 'none' : 'inline-block';
+            if (moonMobile) moonMobile.style.display = isDark ? 'inline-block' : 'none';
+        }
+    }
+
+    // Initialize Dark Mode
+    document.addEventListener('DOMContentLoaded', function() {
+        const darkModeManager = new DarkModeManager();
+    });
+
+    // Desktop dropdown functionality
+    $(document).ready(function() {
+        let desktopDropdownBtn = $('#desktop-dropdown-btn');
+        let desktopDropdownMenu = $('#desktop-dropdown-menu');
+        let dropdownArrow = desktopDropdownBtn.find('svg');
+        let isDesktopDropdownOpen = false;
+
+        desktopDropdownBtn.click(function(e) {
+            e.preventDefault();
+            isDesktopDropdownOpen = !isDesktopDropdownOpen;
+            
+            if(isDesktopDropdownOpen) {
+                desktopDropdownMenu.removeClass('scale-95 opacity-0 invisible').addClass('scale-100 opacity-100 visible');
+                dropdownArrow.addClass('rotate-180');
+            } else {
+                desktopDropdownMenu.removeClass('scale-100 opacity-100 visible').addClass('scale-95 opacity-0 invisible');
+                dropdownArrow.removeClass('rotate-180');
+            }
+        });
+
+        $(document).click(function(e) {
+            if (!desktopDropdownBtn.is(e.target) && !desktopDropdownMenu.is(e.target) && desktopDropdownMenu.has(e.target).length === 0) {
+                desktopDropdownMenu.removeClass('scale-100 opacity-100 visible').addClass('scale-95 opacity-0 invisible');
+                dropdownArrow.removeClass('rotate-180');
+                isDesktopDropdownOpen = false;
+            }
+        });
+
+        // Mobile Navigation
+        $('.menuIcon').click(function() {
+            $(this).toggleClass('on');
+            $('.NavigationSlideOut').css('right', $(this).hasClass('on') ? '0' : '-300px');
+        });
+
+        // Mobile Dropdown
+        $('#mobile-dropdown-btn').click(function(e) {
+            e.preventDefault();
+            const dropdownContent = $('#mobile-dropdown');
+            const parentTab = $(this).closest('.NavigationTab');
+            
+            parentTab.toggleClass('active');
+            if (dropdownContent.hasClass('show')) {
+                dropdownContent.removeClass('show');
+                setTimeout(() => {
+                    dropdownContent.css('display', 'none');
+                }, 300);
+            } else {
+                dropdownContent.css('display', 'block');
+                setTimeout(() => {
+                    dropdownContent.addClass('show');
+                }, 10);
+            }
+        });
+    });
+
+    // ============================================
+    // GOOGLE DRIVE DOCUMENT MANAGEMENT
+    // ============================================
+    
+    // Konfigurasi dokumen - Silakan ubah dengan ID Google Drive Anda
+    // Format ID Drive: Ambil dari URL share https://drive.google.com/file/d/ID_DISINI/view
+    const documentsConfig = [
+        {
+            id: '1pCpPoPaYjUIWR2_RIs18J3WB-9O4OEb9',  // ID dokumen pertama dari Google Drive
+            title: 'Peraturan Gubernur Jawa Timur No. 56 Tahun 2023 tentang Pedoman Penilaian Desa/Kelurahan Bersih dan Lestari',
+            size: '12.8 MB',
+            type: 'PDF Document',
+            dateAdded: '13-01-2025',
+            dateModified: '13-01-2025'
+        },
+        {
+            id: '1pQjkJfN4sApF6jAmXOq8DSfx5uXivmOI',  // ID dokumen kedua dari Google Drive
+            title: 'Buku Pedoman Desa/Kelurahan Berseri',
+            size: '1.5 MB',
+            type: 'PDF Document',
+            dateAdded: '19-02-2025',
+            dateModified: '19-02-2025'
+        },
+        {
+            id: '1EQY9AE8nJQi9DryMpddALJO9u8GB5u5q',  // ID dokumen ketiga dari Google Drive
+            title: 'Template Surat pernyataan Desa/Kelurahan BERSERI',
+            size: '17 KB',
+            type: 'Word Document',
+            dateAdded: '13-01-2025',
+            dateModified: '13-01-2025'
+        },
+        {
+            id: 'GANTI_DENGAN_ID_DOCUMENT_4',  // ID dokumen keempat dari Google Drive
+            title: 'Template Surat Pernyataan Kepala Desa/Kelurahan',
+            size: '1.8 MB',
+            type: 'Word Document',
+            dateAdded: '24-10-2023',
+            dateModified: '24-10-2023'
+        }
+    ];
+
+    // Function untuk generate HTML dokumen
+    function generateDownloadItems() {
+        const container = document.getElementById('downloadContainer');
+        
+        if (!container) return;
+        
+        container.innerHTML = '';
+        
+        documentsConfig.forEach((doc, index) => {
+            if (!doc.id || doc.id.startsWith('GANTI_DENGAN')) {
+                console.warn(`Dokumen "${doc.title}" belum dikonfigurasi dengan ID Google Drive yang valid`);
+                return;
+            }
+            
+            const itemHTML = `
+                <div class="bg-white rounded-lg p-4 border download-item">
+                    <div class="flex flex-col sm:flex-row mb-3">
+                        <div class="file-info flex-1">
+                            <h3 class="font-medium text-gray-900 file-title">${doc.title}</h3>
+                        </div>
+                        <div class="flex items-center gap-2 flex-shrink-0">
+                            <button class="preview-btn hover:text-emerald-700" 
+                                    data-file-id="${doc.id}" 
+                                    data-file-name="${doc.title}"
+                                    onclick="previewDocument(this)">
+                                Preview
+                            </button>
+                            <button class="download-btn px-3 py-1.5 rounded-lg hover:bg-[#98d55b] transition-colors" 
+                                    data-file-id="${doc.id}" 
+                                    data-file-name="${doc.title}"
+                                    onclick="downloadDocument(this)">
+                                Download
+                            </button>
+                        </div>
+                    </div>
+                    <div class="border-t pt-3 grid grid-cols-2 gap-4 file-details">
+                        <div>
+                            <p>Size: ${doc.size}</p>
+                            <p>Type: ${doc.type}</p>
+                        </div>
+                        <div>
+                            <p>Date added: ${doc.dateAdded}</p>
+                            <p>Date modified: ${doc.dateModified}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            container.insertAdjacentHTML('beforeend', itemHTML);
+        });
+    }
+
+    // Function untuk preview dokumen di browser
+    function previewDocument(button) {
+        const fileId = button.getAttribute('data-file-id');
+        const fileName = button.getAttribute('data-file-name');
+        
+        if (!fileId || fileId.startsWith('GANTI_DENGAN')) {
+            alert('Preview tidak tersedia untuk dokumen ini karena belum dikonfigurasi');
+            return;
+        }
+        
+        // URL preview Google Drive (membuka di viewer Google Drive pada tab browser baru)
+        const previewUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+        
+        window.open(previewUrl, '_blank', 'width=1000,height=800');
+    }
+
+    // Function untuk download dokumen dengan auto-download tanpa redirect ke Google Drive
+    function downloadDocument(button) {
+        const fileId = button.getAttribute('data-file-id');
+        const fileName = button.getAttribute('data-file-name');
+        
+        if (!fileId || fileId.startsWith('GANTI_DENGAN')) {
+            alert('Download tidak tersedia untuk dokumen ini karena belum dikonfigurasi');
+            return;
+        }
+        
+        // Tampilkan loading indicator
+        button.disabled = true;
+        const originalText = button.textContent;
+        button.textContent = 'Downloading...';
+        
+        // URL export Google Drive untuk download langsung
+        const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+        
+        // Buat hidden link dan trigger download
+        const link = document.createElement('a');
+        link.href = downloadUrl;
+        link.setAttribute('download', fileName);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        // Reset button state setelah 2 detik
+        setTimeout(() => {
+            button.disabled = false;
+            button.textContent = originalText;
+        }, 2000);
+    }
+
+    // Initialize download items saat DOM siap
+    document.addEventListener('DOMContentLoaded', generateDownloadItems);
+</script>
+</body>
+</html>
